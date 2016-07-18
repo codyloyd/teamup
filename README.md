@@ -1,4 +1,4 @@
-# Teamup
+# Teamup #intermediate #advanced
 
 A student project for [Learn JavaScript with Eric Elliott](https://ericelliottjs.com).
 
@@ -9,7 +9,7 @@ Want to work as a team? Find a coding buddy in the [student chat](https://gitter
 
 You have a great new project, but you need a team to build it. You can write a project description, create and describe the roles you need to fill, then let users submit applications to join the team. Review applications, and click to accept new collaborators to the team.
 
-## Mid Level
+## Intermediate
 
 * Allow users to sign up. Use passwordless authentication. Consider [GitHub authentication](https://developer.github.com/guides/basics-of-authentication/). During the signup page, the user should be able to create a profile with a brief bio and relevant links to LinkedIn, GitHub, and a portfolio URL.
 * After signing in, the user should be directed to a page listing existing projects, with a button to add a new project.
