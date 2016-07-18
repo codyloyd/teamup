@@ -19,8 +19,8 @@ You have a great new project, but you need a team to build it. You can write a p
 
 ## Advanced
 
-* For applicant evaluation, create a virtual assistant that will discover free times and schedule Google Hangout interviews.
-
+* For applicant evaluation, add an "Interview" button to the applicant list that project owners see. Create a virtual assistant that will discover free times and schedule Google Hangout interviews.
+* Give the virtual assistant natural language processing skills. It should be able to understand things like "I'm free next Teusday at 1pm EST", or "Any time after 2pm tomorrow."
 
 ## Extra Credit
 
