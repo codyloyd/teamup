@@ -26,6 +26,7 @@ You have a great new project, but you need a team to build it. You can write a p
 
 * When an applicant is accepted for a role, send a welcome email with a link to the [Contributing guide](https://github.com/blog/1184-contributing-guidelines) and details for team meetings.
 * All other applicants should be notified that the role has been filled, and invited to apply for other roles. Use an email service such as [Mandrill](https://www.mandrill.com/) or [Sendgrid](https://sendgrid.com/) for email delivery.
+* Instead of Google Hangouts, create an integrated interview experience using WebRTC.
 
 
 ## To Implement:
