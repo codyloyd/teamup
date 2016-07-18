@@ -7,7 +7,7 @@ Want to work as a team? Find a coding buddy in the [student chat](https://gitter
 
 ## Description
 
-You have a great new project, but you need a team to build it. You can write a project description, create and describe the roles you need to fill, then let users submit applications to join the team. Review applications, and click to accept new collaborators to the team.
+You have a great new project, but you need a team to build it. You can write a project description, create and describe the roles you need to fill, then let users submit applications to join the team. Review applications, and click to accept new collaborators or schedule interviews with applicants.
 
 ## Intermediate
 
