@@ -11,7 +11,7 @@ You have a great new project, but you need a team to build it. You can write a p
 
 ## Intermediate
 
-* Allow users to sign up. Use passwordless authentication. Consider [GitHub authentication](https://developer.github.com/guides/basics-of-authentication/). During the signup page, the user should be able to create a profile with a brief bio and relevant links to LinkedIn, GitHub, and a portfolio URL.
+* Allow users to sign up. Use passwordless authentication. Consider [GitHub authentication](https://developer.github.com/guides/basics-of-authentication/). During signup, the user should be able to create a profile with a brief bio and relevant links to LinkedIn, GitHub, and a portfolio URL.
 * After signing in, the user should be directed to a page listing existing projects, with a button to add a new project.
 * Create a form to submit a new project. Save the project to a database on submit.
 * A project detail page should allow users to view a project from the list. The project page should list all open roles. Each open role should have a button allowing the user to apply for the role. The project owner should be able to see a list of applants. Next to each applicant should be an "Accept" button.
