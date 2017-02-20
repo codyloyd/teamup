@@ -1,0 +1,1 @@
+import '../components/_example-button.test.js';
