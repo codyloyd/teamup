@@ -1,9 +1,6 @@
-# Teamup #intermediate #advanced
+# Teamup
 
-A student project for [Learn JavaScript with Eric Elliott](https://ericelliottjs.com).
-
-Want to work as a team? Find a coding buddy in the [student chat](https://gitter.im/learn-javascript-courses/javascript-questions).
-
+A student project for [Learn JavaScript with Eric Elliott](https://ericelliottjs.com), implemented by @codyloyd, @kennylavender & @thoragio.
 
 ## Description
 
@@ -34,5 +31,6 @@ You have a great new project, but you need a team to build it. You can write a p
 1. Fork this repo
 2. Implement your solution.
 3. Open an issue with a link to your fork.
+
 
 To get credit, you must [open an issue](https://github.com/learn-javascript-courses/rejection/issues/new?title=Challenge+completed+level:+basic/mid/advanced) with a link to your fork.
