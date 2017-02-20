@@ -1,0 +1,16 @@
+{
+  "extends": "standard",
+  "plugins": [
+    "react",
+  ],
+  "rules": {
+    "no-return-assign": 0,
+    "react/jsx-uses-react": 1,
+    "react/jsx-uses-vars": 1
+  },
+  "globals": {
+    # testing variables
+    "it": false,
+    "test": false
+  }
+}
