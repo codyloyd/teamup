@@ -32,4 +32,5 @@ You have a great new project, but you need a team to build it. You can write a p
 2. Implement your solution.
 3. Open an issue with a link to your fork.
 
+
 To get credit, you must [open an issue](https://github.com/learn-javascript-courses/rejection/issues/new?title=Challenge+completed+level:+basic/mid/advanced) with a link to your fork.
