@@ -1,4 +1,4 @@
-import test from 'tape';
+import describe from 'tape';
 import React from 'react';
 import dom from 'cheerio';
 import ReactDOMServer from 'react-dom/server';
@@ -29,7 +29,7 @@ const createButtonProps = ({
 
 
 // What are we testing
-test('ExampleButton', nest => {
+describe('ExampleButton', nest => {
 
     // Context: Test with the default Props
     nest.test('...default props', ({ end, equal }) => {
