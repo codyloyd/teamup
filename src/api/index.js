@@ -13,9 +13,6 @@ export const getProjectById = (id) => {
         .then(handleErrors) // Check for errors and throws error if required
         .then((response) => {
             return response.json();
-        })
-        .then(json => {
-            return new Promise(resolve => resolve(Object.assign({}, json, {id: json.identifier})));
         });
 };
 
