@@ -1,3 +1,14 @@
+/*
+ * 
+ * This is our API Interface. It allows us to
+ * keep our API logic and our Redux Async Actions seperate.
+ * 
+ * For more info on module interfaces and why we use them, see Erics book 
+ * Programming JavaScript Applications, Chapter 4, Interfaces. Or I can try
+ * to expalin in the channel
+ * 
+ */
+
 function handleErrors(response) {
     if (!response.ok) {
         throw Error(response.statusText);
