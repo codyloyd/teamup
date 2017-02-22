@@ -49,7 +49,14 @@ export const fetchProjectCollectionFailed = () => {}
  *
  */
 
-export const fetchProject = () => {}
+export const fetchProject = ( id ) => ( dispatch, getState, api ) => {
+    return api.getProjectById(id).then(project => {
+        dispatch(fetchProjectSuccessfull(id, project));
+    }).catch(e => {
+        dispatch(fetchProjectFailed(id, e.message));
+    });
+};
+
 export const fetchProjectCollection = () => {}
 
 /*

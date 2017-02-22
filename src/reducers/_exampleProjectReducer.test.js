@@ -119,15 +119,65 @@ describe('fetchProjectFailed()', ({ test }) => {
  * 
  */
 
-// describe('fetchProject()', ({ test }) => {
-//     test('...successfull', ({ end, deepEqual }) => {
+describe('fetchProject()', ({ test }) => {
+    test('...successfull', ({ end, deepEqual }) => {
+        const msg = 'should dispatch fetchProjectRequested and fetchProjectSuccessfull';
 
-//     });
+        const project = createProject({ id: "2" });
 
-//     test('...error thrown from api', ({ end, deepEqual }) => {
+        // Fake the api response
+        const api  = {
+            getProjectById: () => new Promise(resolve => resolve( project ))
+        };
 
-//     });
-// });
+        // Create a fake dispatch function, we could make a resuable function
+        // that does all this for us in each test.
+        let state = reducer();
+        const dispatch = (action) => {
+            if ( typeof action === 'function' ) { return action(dispatch); }
+            state = reducer(state, action);
+        };
+
+        const expected = Object.assign({}, createDefaultState({
+            byId: { "2": project },
+            allIds: ["2"],
+            statusById: { "2": { isFetching: false, error:false }}
+        }));
+
+        fetchProject("2")(dispatch, undefined, api).then(()=> {
+            deepEqual(state, expected, msg);
+            end();
+        });
+    });
+
+    test('...error thrown from api', ({ end, deepEqual }) => {
+        const msg = 'set isFetching to false, and error equals the error message';
+
+        const errorMessage = 'Failed to load project';
+
+        // Fake the api response
+        const api  = {
+            getProjectById: () => new Promise(reject => { throw new Error(errorMessage); })
+        };
+
+        // Create a fake dispatch function, we could make a resuable function
+        // that does all this for us in each test.
+        let state = reducer();
+        const dispatch = (action) => {
+            if ( typeof action === 'function' ) { return action(dispatch); }
+            state = reducer(state, action);
+        };
+
+        const expected = Object.assign({}, createDefaultState({
+            statusById: { "2": { isFetching: false, error: errorMessage }}
+        }));
+
+        fetchProject("2")(dispatch, undefined, api).then(()=> {
+            deepEqual(state, expected, msg);
+            end();
+        });
+    });
+});
 
 
 /*
