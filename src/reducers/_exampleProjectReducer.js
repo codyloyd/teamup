@@ -50,6 +50,8 @@ export const fetchProjectCollectionFailed = () => {}
  */
 
 export const fetchProject = ( id ) => ( dispatch, getState, api ) => {
+    // This was missing and unnoticed with the previous type of tests.
+    dispatch(fetchProjectRequested(id));
     return api.getProjectById(id).then(project => {
         dispatch(fetchProjectSuccessfull(id, project));
     }).catch(e => {

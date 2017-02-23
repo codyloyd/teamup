@@ -1,4 +1,6 @@
 import describe from 'tape';
+import createProject from '../test/fixtures/_createExampleProject';
+import createDispatch from '../test/utils/createDispatch';
 
 import reducer, { 
     fetchProjectRequested, 
@@ -9,12 +11,6 @@ import reducer, {
     getProjectIsFetching,
     getProjectError
 } from './_exampleProjectReducer';
-
-// We keep these create functions inside the test/fixtures
-// folder so that we can use them for multiple tests if we
-// need to.
-import createProject from '../test/fixtures/_createExampleProject';
-
 
 const createDefaultState = ({
     byId = {},
@@ -111,12 +107,37 @@ describe('fetchProjectFailed()', ({ test }) => {
     });
 });
 
+
+
+
+
 /*
  *
- * Async Action
+ * Async Actions
  * 
- * I can fill this out more later, but just a quick glance
+ */
+
+/*
+ *
+ * The old, incorrect way of testing fetchProject().
  * 
+ * Reason:
+ * 
+ * I found a bug in my other app that was not dispatching 
+ * the equivalent of fetchProjectRequested, but every passed
+ * because we are only checking the final state. I also found the same
+ * bug in this fetchProject() function.
+ * 
+ * So in order to make sure this function calls all the actions it 
+ * supposed to we should test the actions that are called directly. 
+ * 
+ * The actions are already tested we know that they will be modifiying
+ * the state correctly, so there is no need to test the state again
+ * in this functions test.
+ * 
+ * You can run the tests and see how this one passes, but it should'nt
+ * 
+ *
  */
 
 describe('fetchProject()', ({ test }) => {
@@ -179,6 +200,63 @@ describe('fetchProject()', ({ test }) => {
     });
 });
 
+
+/*
+ *
+ * The new, much simpler and better way.
+ *
+ */
+
+describe('fetchProject()', ({ test }) => {
+    test('...successfull', ({ end, deepEqual }) => {
+        const msg = 'should dispatch fetchProjectRequested and fetchProjectSuccessfull';
+
+        const id = "2";
+        const project = createProject({id});
+
+        // We expect these actions be called in this order
+        const expected = [
+            fetchProjectRequested(id),
+            fetchProjectSuccessfull(id, project)
+        ]
+
+        // Dispatched actions will be pushed into this array.
+        const actual = []; 
+        const dispatch = createDispatch(actual);
+
+        // Fake the api response
+        const api  = {
+            getProjectById: () => new Promise(resolve => resolve( project ))
+        };
+
+        fetchProject("2")(dispatch, undefined, api).then(()=> {
+            deepEqual(actual, expected, msg);
+            end();
+        });
+    });
+
+    test('...error thrown from api', ({ end, deepEqual }) => {
+        const msg = 'should dispatch fetchProjectRequested and fetchProjectFailed';
+
+        const errorMessage = 'Failed to load project';
+        const id = "2";
+        const expected = [
+            fetchProjectRequested(id),
+            fetchProjectFailed(id, errorMessage)
+        ]
+        const actual = []; 
+        const dispatch = createDispatch(actual);
+
+        const api  = {
+            getProjectById: () => new Promise(reject => { throw new Error(errorMessage); })
+        };
+
+        fetchProject("2")(dispatch, undefined, api).then(()=> {
+            deepEqual(actual, expected, msg);
+            end();
+        });
+    });
+});
 
 /*
  *
