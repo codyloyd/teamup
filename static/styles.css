@@ -1,0 +1,18 @@
+/*div, img, section {
+  border: solid 1px black;
+}*/
+.img-center {
+  display: block;
+  margin: 0 auto;
+}
+.pad-login-btn {
+  padding-top: 2em;
+  padding-bottom: 3em;  
+}
+.pad-create-project {
+  padding-top: 3em;
+  padding-bottom: 2em;
+}
+.footer-color {
+  background-color: #ccc;
+}
