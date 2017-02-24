@@ -36,6 +36,6 @@ export const getProjectById = (id) => {
 
 // import firebase from 'firebase';
 
-// export const getProjectById = (id) => {
-//     return firebase.database().ref(`project/${id}`);
-// }
+export const getProjectById = (id) => {
+    return firebase.database().ref(`project/${id}`).once('value').then(data => data.val());
+}
