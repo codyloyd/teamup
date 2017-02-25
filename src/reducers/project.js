@@ -1,13 +1,13 @@
 const defaultState = {}
 
-const project = (state = defaultState, action) => {
-  const { type } = action
+const project = (state = defaultState, action = 'DEFAULT') => {
+  const { type, payload } = action
   switch (type) {
+    case 'CREATE_PROJECT':
+      return { ...payload }
     default:
       return state
   }
 }
 
-export default {
-  project
-}
+export default project
