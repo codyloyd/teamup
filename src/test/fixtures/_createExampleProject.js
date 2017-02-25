@@ -1,12 +1,12 @@
-import cuid from 'cuid';
+import cuid from 'cuid'
 
 const createExampleProject = ({
-    id = cuid(),
-    name = 'Anonymous',
-    slug = 'anonymous',
-    description = '',
+  id = cuid(),
+  name = 'Anonymous',
+  slug = 'anonymous',
+  description = ''
 } = {}) => ({
-    id, name, slug, description
-});
+  id, name, slug, description
+})
 
-export default createExampleProject;
+export default createExampleProject
