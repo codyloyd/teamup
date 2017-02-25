@@ -1,5 +1,38 @@
 import {combineReducers} from 'redux'
+import cuid from 'cuid'
 import project from './project'
+
+// ** action types **
+const CREATE_PROJECT = 'CREATE_PROJECT'
+// ** action creators **
+export const createProject = ({
+  ownerId = '',
+  name = '',
+  summary = '',
+  tags = [],
+  description = '',
+  roles = [],
+  id = cuid(),
+  status = 'open',
+  timeStamp = Date.now(),
+  lastUpdated = Date.now()
+}) => (
+  {
+    type: CREATE_PROJECT,
+    payload: {
+      id,
+      ownerId,
+      name,
+      summary,
+      tags,
+      description,
+      roles,
+      status,
+      timeStamp,
+      lastUpdated
+    }
+  }
+)
 
 const defaultState = {
   byId: {},
