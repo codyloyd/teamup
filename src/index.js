@@ -2,9 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App'
 import './index.css'
-import {fetchProjects_} from './api'
+import firebaseApp from './firebase';
+import {fetchProjects} from './api'
 
-fetchProjects_().then(data => console.log(data))
+fetchProjects().then(data => console.log(data))
 
 ReactDOM.render(
   <App />,
