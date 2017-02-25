@@ -1,3 +1,4 @@
+import {combineReducers} from 'redux'
 import project from './project'
 
 const defaultState = {
@@ -23,3 +24,5 @@ export const allIds = (state = defaultState.allIds, action) => {
       return state
   }
 }
+
+export const projects = combineReducers({byId, allIds})
