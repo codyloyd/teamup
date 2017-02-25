@@ -7,5 +7,5 @@ export const fetchProjects = () => {
 }
 
 export default {
-    fetchProjects
+  fetchProjects
 }
