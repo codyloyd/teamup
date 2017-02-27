@@ -2,12 +2,13 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import App from './components/App'
 import './index.css'
+// eslint-disable-next-line
 import firebaseApp from './firebase'
-import {fetchProjects} from './api'
+import configureStore from './configureStore'
 
-fetchProjects().then(data => console.log(data))
+const store = configureStore()
 
 ReactDOM.render(
-  <App />,
+  <App store={store}/>,
   document.getElementById('root')
 )

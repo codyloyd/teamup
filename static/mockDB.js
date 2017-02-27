@@ -6,6 +6,7 @@ db = {
       name: 'project name',
       description: 'project description.....',
       summary: 'project summary.....',
+      status: 'open', // open/closed
       roles: [
         'roleId1',
         'roleId2'

@@ -1,0 +1,140 @@
+import describe from 'tape'
+import deepFreeze from 'deep-freeze'
+import { byId, isFetching } from './projects'
+
+describe('byId', ({test}) => {
+  test('FETCH_PROJECTS_SUCCESSFUL', (assert) => {
+    const msg = 'successful fetching of projects should load projects into db'
+    const stateBefore = {}
+    deepFreeze(stateBefore)
+    const action = {
+      type: 'FETCH_PROJECTS_SUCCESSFUL',
+      response: {
+        '01': {
+          id: '01',
+          ownerId: '1234',
+          name: 'project name',
+          description: 'project description.....',
+          summary: 'project summary.....',
+          status: 'open', // open/closed
+          roles: [
+            'roleId1',
+            'roleId2'
+          ],
+          tags: [
+            'tag1',
+            'tag2',
+            'tag3'
+          ],
+          timeStamp: 123456,
+          lastUpdated: 123456
+        },
+        '02': {
+          id: '02',
+          ownerId: '1234',
+          name: 'project name',
+          description: 'project description.....',
+          summary: 'project summary.....',
+          status: 'open', // open/closed
+          roles: [
+            'roleId1',
+            'roleId2'
+          ],
+          tags: [
+            'tag1',
+            'tag2',
+            'tag3'
+          ],
+          timeStamp: 123456,
+          lastUpdated: 123456
+        }
+      }
+    }
+    deepFreeze(action)
+    const expected = {
+      '01': {
+        id: '01',
+        ownerId: '1234',
+        name: 'project name',
+        description: 'project description.....',
+        summary: 'project summary.....',
+        status: 'open', // open/closed
+        roles: [
+          'roleId1',
+          'roleId2'
+        ],
+        tags: [
+          'tag1',
+          'tag2',
+          'tag3'
+        ],
+        timeStamp: 123456,
+        lastUpdated: 123456
+      },
+      '02': {
+        id: '02',
+        ownerId: '1234',
+        name: 'project name',
+        description: 'project description.....',
+        summary: 'project summary.....',
+        status: 'open', // open/closed
+        roles: [
+          'roleId1',
+          'roleId2'
+        ],
+        tags: [
+          'tag1',
+          'tag2',
+          'tag3'
+        ],
+        timeStamp: 123456,
+        lastUpdated: 123456
+      }
+    }
+    const actual = byId(stateBefore, action)
+    assert.deepEqual(actual, expected, msg)
+    assert.end()
+  })
+})
+
+describe('isFetching', ({test}) => {
+  test('FETCH_PROJECTS_REQUESTED', (assert) => {
+    const msg = 'isFetching returns true when the project is requested'
+    const stateBefore = false
+    deepFreeze(stateBefore)
+    const action = {
+      type: 'FETCH_PROJECTS_REQUESTED'
+    }
+    const expected = true
+    const actual = isFetching(stateBefore, action)
+    assert.equal(actual, expected, msg)
+    assert.end()
+  })
+
+  test('FETCH_PROJECTS_SUCCESSFUL', (assert) => {
+    const msg = 'isFetching returns true when the project is requested'
+    const stateBefore = true
+    deepFreeze(stateBefore)
+    const action = {
+      type: 'FETCH_PROJECTS_SUCCESSFUL'
+    }
+    const expected = false
+    const actual = isFetching(stateBefore, action)
+    assert.equal(actual, expected, msg)
+    assert.end()
+  })
+
+  test('FETCH_PROJECTS_FAILED', (assert) => {
+    const msg = 'isFetching returns true when the project is requested'
+    const stateBefore = true
+    deepFreeze(stateBefore)
+    const action = {
+      type: 'FETCH_PROJECTS_FAILED'
+    }
+    const expected = false
+    const actual = isFetching(stateBefore, action)
+    assert.equal(actual, expected, msg)
+    assert.end()
+  })
+})
+
