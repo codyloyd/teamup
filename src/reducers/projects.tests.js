@@ -1,6 +1,6 @@
 import describe from 'tape'
 import deepFreeze from 'deep-freeze'
-import { byId, allIds, projects } from './projects'
+import { byId, isFetching } from './projects'
 
 describe('byId', ({test}) => {
   test('FETCH_PROJECTS_SUCCESSFUL', (assert) => {
@@ -93,6 +93,47 @@ describe('byId', ({test}) => {
     }
     const actual = byId(stateBefore, action)
     assert.deepEqual(actual, expected, msg)
+    assert.end()
+  })
+})
+
+describe('isFetching', ({test}) => {
+  test('FETCH_PROJECTS_REQUESTED', (assert) => {
+    const msg = 'isFetching returns true when the project is requested'
+    const stateBefore = false
+    deepFreeze(stateBefore)
+    const action = {
+      type: 'FETCH_PROJECTS_REQUESTED'
+    }
+    const expected = true
+    const actual = isFetching(stateBefore, action)
+    assert.equal(actual, expected, msg)
+    assert.end()
+  })
+
+  test('FETCH_PROJECTS_SUCCESSFUL', (assert) => {
+    const msg = 'isFetching returns true when the project is requested'
+    const stateBefore = true
+    deepFreeze(stateBefore)
+    const action = {
+      type: 'FETCH_PROJECTS_SUCCESSFUL'
+    }
+    const expected = false
+    const actual = isFetching(stateBefore, action)
+    assert.equal(actual, expected, msg)
+    assert.end()
+  })
+
+  test('FETCH_PROJECTS_FAILED', (assert) => {
+    const msg = 'isFetching returns true when the project is requested'
+    const stateBefore = true
+    deepFreeze(stateBefore)
+    const action = {
+      type: 'FETCH_PROJECTS_FAILED'
+    }
+    const expected = false
+    const actual = isFetching(stateBefore, action)
+    assert.equal(actual, expected, msg)
     assert.end()
   })
 })

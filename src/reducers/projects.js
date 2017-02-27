@@ -22,6 +22,7 @@ export const fetchProject = (id) => (dispatch) => {
 }
 
 export const fetchProjects = () => (dispatch) => {
+  dispatch({type: FETCH_PROJECTS_REQUESTED})
   api.fetchProjects().then(response => {
     dispatch({
       type: FETCH_PROJECTS_SUCCESSFUL,
@@ -45,5 +46,17 @@ export const byId = (state = defaultState.byId, action) => {
   }
 }
 
-const projects = combineReducers({byId})
-export default projects
+export const isFetching = (state = false, action) => {
+  const { type } = action
+  switch (type) {
+    case FETCH_PROJECTS_REQUESTED:
+      return true
+    case FETCH_PROJECTS_SUCCESSFUL:
+    case FETCH_PROJECTS_FAILED:
+      return false
+    default:
+      return state
+  }
+}
+
+export const projects = combineReducers({byId, isFetching})

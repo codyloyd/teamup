@@ -5,5 +5,4 @@
 
 // Reducers
 // import '../reducers/_exampleProjectReducer.test.js'
-import '../reducers/project.tests.js'
 import '../reducers/projects.tests'
