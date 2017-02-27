@@ -1,0 +1,62 @@
+{
+  "projects": {
+    "01": {
+      "id": "01",
+      "ownerId": "1234",
+      "name": "project one",
+      "description": "project description.....",
+      "summary": "project summary.....",
+      "status": "open",
+      "roles": [
+        "roleId1",
+        "roleId2"
+      ],
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ],
+      "timeStamp": "123456",
+      "lastUpdated": "123456"
+    },
+    "02": {
+      "id": "01",
+      "ownerId": "1234",
+      "name": "project two",
+      "description": "project description.....",
+      "summary": "project summary.....",
+      "status": "open",
+      "roles": [
+        "roleId1",
+        "roleId2"
+      ],
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ],
+      "timeStamp": "123456",
+      "lastUpdated": "123456"
+    },
+    "03": {
+      "id": "01",
+      "ownerId": "1234",
+      "name": "project three",
+      "description": "project description.....",
+      "summary": "project summary.....",
+      "status": "open",
+      "roles": [
+        "roleId1",
+        "roleId2"
+      ],
+      "tags": [
+        "tag1",
+        "tag2",
+        "tag3"
+      ],
+      "timeStamp": "123456",
+      "lastUpdated": "123456"
+    }
+  }
+}
+
