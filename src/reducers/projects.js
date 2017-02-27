@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+import cuid from 'cuid'
 import * as api from '../api'
 
 // ** action types **
@@ -40,8 +41,30 @@ export const fetchProjects = () => (dispatch) => {
   )
 }
 
-export const createProject = (project) => (dispatch) => {
-  api.createProject(project).then(response =>
+export const createProject = ({
+  id = cuid(),
+  ownerId = '',
+  name = '',
+  summary = '',
+  tags = [],
+  description = '',
+  roles = [],
+  status = 'open',
+  timeStamp = Date.now(),
+  lastUpdated = Date.now()
+}) => (dispatch) => {
+  api.createProject({
+    id,
+    ownerId,
+    name,
+    summary,
+    tags,
+    description,
+    roles,
+    status,
+    timeStamp,
+    lastUpdated
+  }).then(response =>
     dispatch({
       type: CREATE_PROJECT_SUCCESSFUL,
       response

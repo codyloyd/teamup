@@ -7,32 +7,9 @@ export const fetchProjects = () => {
   })
 }
 
-export const createProject =
-({
-  ownerId = '',
-  name = '',
-  summary = '',
-  tags = [],
-  description = '',
-  roles = [],
-  status = 'open',
-  timeStamp = Date.now(),
-  lastUpdated = Date.now()
-}) => {
-  const newProjectRef = firebase.database().ref('projects').push()
-  const project = {
-    id: newProjectRef.key,
-    ownerId,
-    name,
-    summary,
-    tags,
-    description,
-    roles,
-    status,
-    timeStamp,
-    lastUpdated
-  }
-  return newProjectRef.set(project).then(() => project)
+export const createProject = (project) => {
+  return firebase.database().ref(`projects/${project.id}`).set(project)
+    .then(() => project)
 }
 
 // actually.. do we need to fetch individual projects?
