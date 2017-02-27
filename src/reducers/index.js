@@ -1,5 +1,6 @@
 import projects from './projects'
-import thunk from 'redux-thunk'
-import { combineReducers, applyMiddleware } from 'redux'
+import { combineReducers } from 'redux'
 
-export default combineReducers(projects, applyMiddleware(thunk))
+// we'll presumably have more reducers to combine eventually
+// so I'm leaving 'combineReducers'
+export default combineReducers(projects)
