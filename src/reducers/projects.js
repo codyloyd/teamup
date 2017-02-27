@@ -59,4 +59,4 @@ export const isFetching = (state = false, action) => {
   }
 }
 
-export const projects = combineReducers({byId, isFetching})
+export default combineReducers({byId, isFetching})
