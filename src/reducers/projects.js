@@ -23,12 +23,20 @@ export const fetchProject = (id) => (dispatch) => {
 
 export const fetchProjects = () => (dispatch) => {
   dispatch({type: FETCH_PROJECTS_REQUESTED})
-  api.fetchProjects().then(response => {
-    dispatch({
-      type: FETCH_PROJECTS_SUCCESSFUL,
-      response
-    })
-  })
+  api.fetchProjects().then(
+    response => {
+      dispatch({
+        type: FETCH_PROJECTS_SUCCESSFUL,
+        response
+      })
+    },
+    error =>  {
+      dispatch({
+        type: FETCH_PROJECTS_FAILED,
+        message: error.message || 'something went wrong'
+      })
+    }
+  )
 }
 
 const defaultState = {
@@ -59,4 +67,17 @@ export const isFetching = (state = false, action) => {
   }
 }
 
-export default combineReducers({byId, isFetching})
+export const errorMessage = (state = null, action) => {
+  const { type } = action
+  switch (type) {
+    case FETCH_PROJECTS_FAILED:
+      return action.message
+    case FETCH_PROJECTS_REQUESTED:
+    case FETCH_PROJECT_SUCCESSFUL:
+      return null
+    default:
+      return state
+  }
+}
+
+export default combineReducers({byId, isFetching, errorMessage})

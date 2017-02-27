@@ -1,6 +1,6 @@
 import describe from 'tape'
 import deepFreeze from 'deep-freeze'
-import { byId, isFetching } from './projects'
+import { byId, isFetching, errorMessage } from './projects'
 
 describe('byId', ({test}) => {
   test('FETCH_PROJECTS_SUCCESSFUL', (assert) => {
@@ -138,3 +138,39 @@ describe('isFetching', ({test}) => {
   })
 })
 
+describe('errorMessage', ({test}) => {
+  test('FETCH_PROJECTS_REQUESTED', assert => {
+    const msg = 'errorMessage should be null when projects are requested'
+    const stateBefore = null
+    const action = {
+      type: 'FETCH_PROJECTS_REQUESTED'
+    }
+    const expected = null
+    const actual = errorMessage(stateBefore, action)
+    assert.equal(actual, expected, msg)
+    assert.end()
+  })
+  test('FETCH_PROJECTS_SUCCESSFUL', assert => {
+    const msg = 'errorMessage null when projects are returned successfully'
+    const stateBefore = null
+    const action = {
+      type: 'FETCH_PROJECTS_SUCCESSFUL'
+    }
+    const expected = null
+    const actual = errorMessage(stateBefore, action)
+    assert.equal(actual, expected, msg)
+    assert.end()
+  })
+  test('FETCH_PROJECTS_FAILED', assert => {
+    const msg = 'errorMessage has message when fail'
+    const stateBefore = null
+    const action = {
+      type: 'FETCH_PROJECTS_FAILED',
+      message: 'oh no!'
+    }
+    const expected = 'oh no!'
+    const actual = errorMessage(stateBefore, action)
+    assert.equal(actual, expected, msg)
+    assert.end()
+  })
+})
