@@ -8,6 +8,7 @@ export const FETCH_PROJECTS_FAILED = 'FETCH_PROJECTS_FAILED'
 
 export const FETCH_PROJECT_SUCCESSFUL = 'FETCH_PROJECT_SUCCESSFUL'
 
+export const CREATE_PROJECT_SUCCESSFUL = 'CREATE_PROJECT_SUCCESSFUL'
 // ** action creators **
 
 // ** async actions **
@@ -30,12 +31,21 @@ export const fetchProjects = () => (dispatch) => {
         response
       })
     },
-    error =>  {
+    error => {
       dispatch({
         type: FETCH_PROJECTS_FAILED,
         message: error.message || 'something went wrong'
       })
     }
+  )
+}
+
+export const createProject = (project) => (dispatch) => {
+  api.createProject(project).then(response =>
+    dispatch({
+      type: CREATE_PROJECT_SUCCESSFUL,
+      response
+    })
   )
 }
 
@@ -49,6 +59,8 @@ export const byId = (state = defaultState.byId, action) => {
   switch (type) {
     case FETCH_PROJECTS_SUCCESSFUL:
       return {...state, ...response}
+    case CREATE_PROJECT_SUCCESSFUL:
+      return {...state, [response.id]: response}
     default:
       return state
   }

@@ -95,6 +95,33 @@ describe('byId', ({test}) => {
     assert.deepEqual(actual, expected, msg)
     assert.end()
   })
+  test('CREATE_PROJECT_SUCCESSFUL', (assert) => {
+    const msg = 'adds new project to store'
+    const stateBefore = {
+      '01': {
+        id: '01',
+        name: 'awesome project'
+      }
+    }
+    deepFreeze(stateBefore)
+    const action = {
+      type: 'CREATE_PROJECT_SUCCESSFUL',
+      response: {id: '02', name: 'project02'}
+    }
+    const expected = {
+      '01': {
+        id: '01',
+        name: 'awesome project'
+      },
+      '02': {
+        id: '02',
+        name: 'project02'
+      }
+    }
+    const actual = byId(stateBefore, action)
+    assert.deepEqual(actual, expected, msg)
+    assert.end()
+  })
 })
 
 describe('isFetching', ({test}) => {

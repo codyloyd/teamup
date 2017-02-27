@@ -6,6 +6,7 @@ import './index.css'
 import firebaseApp from './firebase'
 import configureStore from './configureStore'
 import appReducer from './reducers'
+// import * as projects from './reducers/projects'
 
 const store = configureStore(appReducer)
 
