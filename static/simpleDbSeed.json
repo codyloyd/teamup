@@ -57,6 +57,35 @@
       "timeStamp": "123456",
       "lastUpdated": "123456"
     }
+  },
+  "roles": {
+    "01": {
+      "id": "01",
+      "projectId": "01",
+      "name": "javascript developer",
+      "status": "open",
+      "description": "role description",
+      "applications": ["01", "02"],
+      "users": ["01", "02"]
+    },
+    "02": {
+      "id": "02",
+      "projectId": "01",
+      "name": "javascript developer",
+      "status": "open",
+      "description": "role description",
+      "applications": ["01", "02"],
+      "users": ["02", "03"]
+    },
+    "03": {
+      "id": "03",
+      "projectId": "02",
+      "name": "javascript developer",
+      "status": "open",
+      "description": "role description",
+      "applications": ["01", "02"],
+      "users": ["01", "03"]
+    }
   }
 }
 

@@ -1,3 +1,6 @@
+# DB Structure
+the following is the layout for the DB.
+```javascript
 db = {
   projects: {
     projectId: {
@@ -65,3 +68,4 @@ db = {
     }
   }
 }
+```
