@@ -72,9 +72,12 @@ export const createProject = ({
   )
 }
 
+// ** reducers **
 const defaultState = {
   byId: {},
-  allIds: []
+  allIds: [],
+  isFetching: false,
+  errorMessage: null
 }
 
 export const byId = (state = defaultState.byId, action) => {
@@ -102,7 +105,7 @@ export const allIds = (state = defaultState.allIds, action) => {
   }
 }
 
-export const isFetching = (state = false, action) => {
+export const isFetching = (state = defaultState.isFetching, action) => {
   const { type } = action
   switch (type) {
     case FETCH_PROJECTS_REQUESTED:
@@ -115,7 +118,7 @@ export const isFetching = (state = false, action) => {
   }
 }
 
-export const errorMessage = (state = null, action) => {
+export const errorMessage = (state = defaultState.errorMessage, action) => {
   const { type } = action
   switch (type) {
     case FETCH_PROJECTS_FAILED:
