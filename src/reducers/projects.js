@@ -89,6 +89,19 @@ export const byId = (state = defaultState.byId, action) => {
   }
 }
 
+export const allIds = (state = defaultState.allIds, action) => {
+  const { type, response } = action
+  switch (type) {
+    case FETCH_PROJECTS_SUCCESSFUL:
+      const newIds = Object.keys(response).filter(k => state.indexOf(k) <= 0)
+      return [...state, ...newIds]
+    case CREATE_PROJECT_SUCCESSFUL:
+      return [...state, response.id]
+    default:
+      return state
+  }
+}
+
 export const isFetching = (state = false, action) => {
   const { type } = action
   switch (type) {
@@ -115,4 +128,4 @@ export const errorMessage = (state = null, action) => {
   }
 }
 
-export default combineReducers({byId, isFetching, errorMessage})
+export default combineReducers({byId, allIds, isFetching, errorMessage})
