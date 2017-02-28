@@ -6,7 +6,10 @@ import './index.css'
 import firebaseApp from './firebase'
 import configureStore from './configureStore'
 import appReducer from './reducers'
+// these imports are useful for testing.. but I keep them commented
+// so that they aren't imported when we aren't using them.
 // import * as projects from './reducers/projects'
+// import * as api from './api'
 
 const store = configureStore(appReducer)
 
