@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+// ** project functions **
 
 // this fetches ALL projects.  may be usefult to limit it later.
 export const fetchProjects = () => {
@@ -11,13 +12,17 @@ export const createProject = (project) => {
   return firebase.database().ref(`projects/${project.id}`).set(project)
     .then(() => project)
 }
-
 // actually.. do we need to fetch individual projects?
-// no reason to toss this method just yet.. but I'm not sure
-// we're going to need it because all the projects
-// are going to be in the store anyway
 export const fetchProject = (id) => {
-  return firebase.database().ref(`projects/${id}`).once('value').then(data => {
-    return data.val()
-  })
+  return firebase.database().ref(`projects/${id}`).once('value')
+    .then(data => data.val())
+}
+
+// ** role functions **
+export const fetchRoles = (projectId) => {
+  return firebase.database().ref('roles')
+    .orderByChild('projectId')
+    .equalTo(projectId)
+    .once('value')
+    .then(data => data.val())
 }
