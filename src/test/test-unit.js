@@ -6,3 +6,4 @@
 // Reducers
 // import '../reducers/_exampleProjectReducer.test.js'
 import '../reducers/projects.tests'
+import '../reducers/roles.tests'
