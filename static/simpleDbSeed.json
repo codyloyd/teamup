@@ -92,6 +92,7 @@
       "id": "01",
       "userId": "01",
       "roleId": "01",
+      "projectId": "01",
       "timeStamp": "12345",
       "message": "introduction.. a type of 'cover letter'"
     },
@@ -99,6 +100,7 @@
       "id": "02",
       "userId": "01",
       "roleId": "01",
+      "projectId": "01",
       "timeStamp": "12345",
       "message": "hi.. pick me plz"
     },
@@ -106,6 +108,7 @@
       "id": "02",
       "userId": "01",
       "roleId": "01",
+      "projectId": "01",
       "timeStamp": "12345",
       "message": "I think I would be a good fit for your project"
     }
