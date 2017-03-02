@@ -1,167 +1,76 @@
 import describe from 'tape'
-import deepFreeze from 'deep-freeze'
-import {byId, allIds, isFetching, errorMessage} from './applications'
+import freeze from 'deep-freeze'
+import {
+  byId,
+  allIds,
+  isFetching,
+  errorMessage,
+  fetchApplicationsSuccessful,
+  createApplicationSuccessful
+} from './applications'
+
+const deepFreeze = (...args) => args.forEach(freeze)
+
+const createApplication = ({
+  id = '01',
+  userId = '01',
+  roleId = '01',
+  timeStamp = '12345',
+  message = 'hey'
+} = {}) => ({
+  id, userId, roleId, timeStamp, message
+})
 
 describe('byId', ({test}) => {
   test('FETCH_APPLICATIONS_SUCCESSFUL', (assert) => {
     const msg = 'roles should be added by ID when fetched'
-    const stateBefore = {}
-    deepFreeze(stateBefore)
-    const action = {
-      type: 'FETCH_APPLICATIONS_SUCCESSFUL',
-      response: {
-        '01': {
-          id: '01',
-          userId: '01',
-          roleId: '01',
-          timeStamp: '12345',
-          message: 'hey'
-        },
-        '02': {
-          id: '02',
-          userId: '01',
-          roleId: '01',
-          timeStamp: '12345',
-          message: 'hey'
-        }
-      }
+    const stateBefore = byId()
+    const applications = {
+      '01': createApplication({id: '01'}),
+      '02': createApplication({id: '02'})
     }
-    const expected = {
-      '01': {
-        id: '01',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      },
-      '02': {
-        id: '02',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      }
-    }
+    deepFreeze(stateBefore, applications)
+    const action = fetchApplicationsSuccessful(applications)
+    const expected = applications
     const actual = byId(stateBefore, action)
     assert.deepEqual(actual, expected, msg)
     assert.end()
   })
+
   test('FETCH_APPLICATIONS_SUCCESSFUL', (assert) => {
     const msg = 'appls should not be duped when fetched'
     const stateBefore = {
-      '01': {
-        id: '01',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      },
-      '03': {
-        id: '03',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      }
+      '01': createApplication({id: '01'}),
+      '03': createApplication({id: '03'})
     }
-    deepFreeze(stateBefore)
-    const action = {
-      type: 'FETCH_APPLICATIONS_SUCCESSFUL',
-      response: {
-        '01': {
-          id: '01',
-          userId: '01',
-          roleId: '01',
-          timeStamp: '12345',
-          message: 'hey'
-        },
-        '02': {
-          id: '02',
-          userId: '01',
-          roleId: '01',
-          timeStamp: '12345',
-          message: 'hey'
-        }
-      }
+    const applications = {
+      '01': createApplication({id: '01'}),
+      '02': createApplication({id: '02'})
     }
+    deepFreeze(stateBefore, applications)
+    const action = fetchApplicationsSuccessful(applications)
     const expected = {
-      '01': {
-        id: '01',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      },
-      '02': {
-        id: '02',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      },
-      '03': {
-        id: '03',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      }
+      '01': createApplication({id: '01'}),
+      '02': createApplication({id: '02'}),
+      '03': createApplication({id: '03'})
     }
     const actual = byId(stateBefore, action)
     assert.deepEqual(actual, expected, msg)
     assert.end()
   })
+
   test('CREATE_APPLICATION_SUCCESSFUL', (assert) => {
     const msg = 'applications should be added byId when created'
     const stateBefore = {
-      '01': {
-        id: '01',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      },
-      '03': {
-        id: '03',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      }
+      '01': createApplication({id: '01'}),
+      '03': createApplication({id: '03'})
     }
     deepFreeze(stateBefore)
-    const action = {
-      type: 'CREATE_APPLICATION_SUCCESSFUL',
-      response: {
-        id: '02',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      }
-    }
+    const action = createApplicationSuccessful(createApplication({id: '02'}))
     const expected = {
-      '01': {
-        id: '01',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      },
-      '02': {
-        id: '02',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      },
-      '03': {
-        id: '03',
-        userId: '01',
-        roleId: '01',
-        timeStamp: '12345',
-        message: 'hey'
-      }
+      '01': createApplication({id: '01'}),
+      '02': createApplication({id: '02'}),
+      '03': createApplication({id: '03'})
     }
     const actual = byId(stateBefore, action)
     assert.deepEqual(actual, expected, msg)
