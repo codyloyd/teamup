@@ -43,6 +43,7 @@ db = {
     '1': {
       userId: '1',
       roleId: '1',
+      message: 'hi, pick me',
       timeStamp: 123456
     }
   },

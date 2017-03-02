@@ -86,6 +86,29 @@
       "applications": ["01", "02"],
       "users": ["01", "03"]
     }
+  },
+  "applications": {
+    "01": {
+      "id": "01",
+      "userId": "01",
+      "roleId": "01",
+      "timeStamp": "12345",
+      "message": "introduction.. a type of 'cover letter'"
+    },
+    "02": {
+      "id": "02",
+      "userId": "01",
+      "roleId": "01",
+      "timeStamp": "12345",
+      "message": "hi.. pick me plz"
+    },
+    "03": {
+      "id": "02",
+      "userId": "01",
+      "roleId": "01",
+      "timeStamp": "12345",
+      "message": "I think I would be a good fit for your project"
+    }
   }
 }
 
