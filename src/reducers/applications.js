@@ -9,7 +9,23 @@ const FETCH_APPLICATIONS_FAILED = 'FETCH_APPLICATIONS_FAILED'
 const CREATE_APPLICATION_SUCCESSFUL = 'CREATE_APPLICATION_SUCCESSFUL'
 
 // ** async actions **
-
+export const fetchApplications = (projectId) => (dispatch) => {
+  dispatch({type: FETCH_APPLICATIONS_REQUESTED})
+  api.fetchApplications(projectId).then(
+    response => {
+      dispatch({
+        type: FETCH_APPLICATIONS_SUCCESSFUL,
+        response
+      })
+    },
+    error => {
+      dispatch({
+        type: FETCH_APPLICATIONS_FAILED,
+        message: error.message || 'applications failed to load'
+      })
+    }
+  )
+}
 // ** reducers **
 const defaultState = {
   byId: {},

@@ -26,3 +26,12 @@ export const fetchRoles = (projectId) => {
     .once('value')
     .then(data => data.val())
 }
+
+// ** application functions **
+export const fetchApplications = (projectId) => {
+  return firebase.database().ref('applications')
+    .orderByChild('projectId')
+    .equalTo(projectId)
+    .once('value')
+    .then(data => data.val())
+}

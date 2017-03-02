@@ -10,6 +10,7 @@ import appReducer from './reducers'
 // so that they aren't imported when we aren't using them.
 // import * as projects from './reducers/projects'
 // import * as roles from './reducers/roles'
+// import * as applications from './reducers/applications'
 // import * as api from './api'
 
 const store = configureStore(appReducer)
