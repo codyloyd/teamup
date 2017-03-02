@@ -112,6 +112,80 @@
       "timeStamp": "12345",
       "message": "I think I would be a good fit for your project"
     }
+  },
+  "users": {
+    "01": {
+      "id": "01",
+      "displayName": "User One",
+      "githubUsername": "gh-username",
+      "signedUp": "15253545",
+      "projectsOwned": [
+        "projectId01",
+        "projectId02"
+      ],
+      "applications": [
+        "applicationId01",
+        "applicationId02"
+      ],
+      "roles": [
+        "roleId01",
+        "roleId02"
+      ]
+    },
+    "02": {
+      "id": "02",
+      "displayName": "User Two",
+      "githubUsername": "gh-username",
+      "signedUp": "15253545",
+      "projectsOwned": [
+        "projectId01",
+        "projectId02"
+      ],
+      "applications": [
+        "applicationId01",
+        "applicationId02"
+      ],
+      "roles": [
+        "roleId01",
+        "roleId02"
+      ]
+    },
+    "03": {
+      "id": "03",
+      "displayName": "User Three",
+      "githubUsername": "gh-username",
+      "signedUp": "15253545",
+      "projectsOwned": [
+        "projectId01",
+        "projectId02"
+      ],
+      "applications": [
+        "applicationId01",
+        "applicationId02"
+      ],
+      "roles": [
+        "roleId01",
+        "roleId02"
+      ]
+    },
+    "04": {
+      "id": "04",
+      "displayName": "User Four",
+      "githubUsername": "gh-username",
+      "signedUp": "15253545",
+      "projectsOwned": [
+        "projectId01",
+        "projectId02"
+      ],
+      "applications": [
+        "applicationId01",
+        "applicationId02"
+      ],
+      "roles": [
+        "roleId01",
+        "roleId02"
+      ]
+    }
   }
 }
 
