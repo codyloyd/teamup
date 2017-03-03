@@ -11,6 +11,7 @@ import appReducer from './reducers'
 // import * as projects from './reducers/projects'
 // import * as roles from './reducers/roles'
 // import * as applications from './reducers/applications'
+// import * as users from './reducers/users'
 // import * as api from './api'
 
 const store = configureStore(appReducer)

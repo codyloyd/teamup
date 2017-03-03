@@ -8,4 +8,5 @@
 import '../reducers/projects.tests'
 import '../reducers/roles.tests'
 import '../reducers/applications.tests'
+import '../reducers/users.tests'
 import '../reducers/currentUser.tests'
