@@ -1,5 +1,6 @@
 import describe from 'tape'
 import deepFreeze from 'deep-freeze'
+
 import {byId, allIds, isFetching, errorMessage} from './roles'
 
 describe('byId', ({test}) => {

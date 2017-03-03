@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+
 import * as api from '../api'
 
 // ** action types **
@@ -34,6 +35,7 @@ export const fetchApplications = (projectId) => (dispatch) => {
     }
   )
 }
+
 // ** reducers **
 const defaultState = {
   byId: {},
@@ -53,6 +55,7 @@ export const byId = (state = defaultState.byId, action = 'NONE') => {
       return state
   }
 }
+
 export const allIds = (state = defaultState.allIds, action) => {
   const {type, response} = action
   switch (type) {
@@ -65,6 +68,7 @@ export const allIds = (state = defaultState.allIds, action) => {
       return state
   }
 }
+
 export const isFetching = (state = defaultState.isFetching, action) => {
   const {type} = action
   switch (type) {
@@ -77,6 +81,7 @@ export const isFetching = (state = defaultState.isFetching, action) => {
       return state
   }
 }
+
 export const errorMessage = (state = defaultState.errorMessage, action) => {
   const {type, message} = action
   switch (type) {

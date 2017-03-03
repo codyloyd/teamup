@@ -1,5 +1,6 @@
 import describe from 'tape'
 import deepFreeze from 'deep-freeze'
+
 import { byId, isFetching, errorMessage, allIds } from './projects'
 
 describe('byId', ({test}) => {
