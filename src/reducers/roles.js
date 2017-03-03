@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+
 import * as api from '../api'
 
 // ** action types **
@@ -26,7 +27,6 @@ export const fetchRoles = (projectId) => (dispatch) => {
     }
   )
 }
-
 
 // ** reducers **
 const defaultState = {
