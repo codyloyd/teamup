@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import * as currentUser from './reducers/currentUser'
 
 var config = {
   apiKey: 'AIzaSyDAOl7zJ3dEZ93__kjI7CiVPAch4yLU_ZY',
@@ -9,3 +10,13 @@ var config = {
 }
 
 export default firebase.initializeApp(config)
+
+export const authObserver = (dispatch) => {
+  firebase.auth().onAuthStateChanged(user => {
+    if (user) {
+      dispatch(currentUser.signInSuccessful(user))
+    } else {
+      dispatch(currentUser.signOutSuccessful(user))
+    }
+  })
+}

@@ -11,9 +11,9 @@ export const signInWithGithub = () => {
   return firebase.auth().getRedirectResult().then(result => {
     if (result.credential) {
       // This gives you a GitHub Access Token. You can use it to access the GitHub API.
-      var token = result.credential.accessToken
+      // var token = result.credential.accessToken
     }
-    var user = result.user
+    // var user = result.user
   }).catch(error => {
     // Handle Errors here.
     var errorCode = error.code
