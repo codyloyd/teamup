@@ -2,7 +2,7 @@ import React from 'react';
 import {Link} from 'react-router';
 import logo from '../images/logo.svg'
 
-export default React => props => {
+export default props => {
   return (
     <nav className="nav has-shadow">
       <div className="container">

@@ -1,9 +1,8 @@
 import React, {Component} from 'react'
-import {Link} from 'react-router'
-import header from '../components/header'
+import Header from '../components/header'
+import Footer from '../components/footer'
 import './App.css'
 
-const Header = header(React)
 
 class App extends Component {
   render () {
@@ -17,6 +16,7 @@ class App extends Component {
           All your projects are belong to us!
         </p>
         {children}
+        <Footer />
       </div>
     )
   }
