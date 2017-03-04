@@ -1,6 +1,7 @@
-import React from 'react';
-import {Link} from 'react-router';
+import React from 'react'
+import {Link} from 'react-router'
 import logo from '../images/logo.svg'
+import * as auth from '../api/auth'
 
 export default React => props => {
   return (
@@ -28,7 +29,22 @@ export default React => props => {
           <Link to="/profile/" className="nav-item is-tab">
             Profile
           </Link>
-          <a className="nav-item is-tab">Log out</a>
+          <a
+            className="nav-item is-tab"
+            onClick={(e) => {
+              e.preventDefault()
+              auth.signInWithGithub()
+            }}
+          >Log In
+          </a>
+          <a
+            className="nav-item is-tab"
+            onClick={(e) => {
+              e.preventDefault()
+              auth.signOut()
+            }}
+          >Log out
+          </a>
         </div>
       </div>
     </nav>

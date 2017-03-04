@@ -14,9 +14,20 @@ const Root = root(React)
 // import * as roles from './reducers/roles'
 // import * as applications from './reducers/applications'
 // import * as users from './reducers/users'
+import * as currentUser from './reducers/currentUser'
 // import * as api from './api'
 
 const store = configureStore(appReducer)
+
+// I have no idea where to put this.
+import firebase from 'firebase'
+firebase.auth().onAuthStateChanged(user => {
+  if (user) {
+    store.dispatch(currentUser.signInSuccessful(user))
+  } else {
+    store.dispatch(currentUser.signOutSuccessful(user))
+  }
+})
 
 ReactDOM.render(
   <Root store={store}/>,
