@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import Root from './components/root'
 import './index.css'
-import './firebase'
+import configureFirebase from './firebase'
 import configureStore from './configureStore'
 import appReducer from './reducers'
 
@@ -16,6 +16,7 @@ import appReducer from './reducers'
 // import * as api from './api'
 
 const store = configureStore(appReducer)
+configureFirebase(store.dispatch)
 
 ReactDOM.render(
   <Root store={store}/>,
