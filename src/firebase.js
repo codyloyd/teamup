@@ -9,9 +9,9 @@ var config = {
   messagingSenderId: '426969224935'
 }
 
-export default firebase.initializeApp(config)
 
-export const authObserver = (dispatch) => {
+export default (dispatch) => {
+  firebase.initializeApp(config)
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
       dispatch(currentUser.signInSuccessful(user))
