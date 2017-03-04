@@ -1,11 +1,13 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import App from './components/App'
+import root from './components/root'
 import './index.css'
 import './firebase'
 import configureStore from './configureStore'
 import appReducer from './reducers'
+
+const Root = root(React)
 // these imports are useful for testing.. but I keep them commented
 // so that they aren't imported when we aren't using them.
 // import * as projects from './reducers/projects'
@@ -17,6 +19,6 @@ import appReducer from './reducers'
 const store = configureStore(appReducer)
 
 ReactDOM.render(
-  <App store={store}/>,
+  <Root store={store}/>,
   document.getElementById('root')
 )

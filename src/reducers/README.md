@@ -68,8 +68,20 @@
             isErrorById: {}
         }
     },
+    ui: {
+        projectList: {
+            
+        },
+        projectCrud: { // The screen for creating, updating, deleting.
+            [projectId]: { // Every project will have one of these.
+                isFetching: false,
+                isLoaded: false,
+                isError: false,
+            }
+        }
+    },
     entities: {
-    		users: {},
+    	users: {},
         roles: {},
         applications: {},
         projects: {}
