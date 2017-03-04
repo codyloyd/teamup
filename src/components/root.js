@@ -9,7 +9,7 @@ const Profile = props => (<h1>Profile</h1>)
 const NoMatch = props => (<h1>No Match</h1>)
 const LandingPage = props => (<h1>LandingPage</h1>)
 
-export default React => ({store}) => {
+export default ({store}) => {
   return (
     <Provider store={store}>
       <Router history={browserHistory}>
@@ -23,6 +23,7 @@ export default React => ({store}) => {
           <Route path="project" component={Project}>
               <Route path="/view/:id" component={Project}/>
               <Route path="/edit/:id" component={Project}/>
+              <Route path="/new/" component={Project}/>
           </Route>
           <Route path="profile" component={Profile}>
               <Route path="/view/:id" component={Profile}/>

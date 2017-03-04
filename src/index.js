@@ -1,13 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-import root from './components/root'
+import Root from './components/root'
 import './index.css'
 import './firebase'
 import configureStore from './configureStore'
 import appReducer from './reducers'
 
-const Root = root(React)
 // these imports are useful for testing.. but I keep them commented
 // so that they aren't imported when we aren't using them.
 // import * as projects from './reducers/projects'

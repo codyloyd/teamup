@@ -11,7 +11,7 @@ export default React => props => {
             Team Up
           </Link>
           <Link to="/projects/" className="nav-item is-tab is-hidden-mobile">Projects</Link>
-          <Link to="/projects/new/" className="nav-item is-tab is-hidden-mobile">Create New Project</Link>
+          <Link to="/project/new/" className="nav-item is-tab is-hidden-mobile">Create New Project</Link>
           <a className="nav-item is-tab is-hidden-mobile">Pricing</a>
           <a className="nav-item is-tab is-hidden-mobile">About</a>
         </div>
