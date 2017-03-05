@@ -40,52 +40,42 @@
 // Another more advanced structure, this is a work in progress
 // the goal is to allow pagination of entities once there becomes
 // too many to fetch them all at once.
+
+// We may want to switch to this.
+
 {
-    app: {
-        userId: null,
-        initialized: {
-            isFetching: false,
-            isError: false,
-        }
-    },
-    ui: {
-    		projectList: {
-        		isFetchingByPage: {},
-            isErrorByPage: {}
-        },
-        projectEdit: {
-        		isFetchingById: {
-            		"1": false, 
-                "2" false
-            },
-            isErrorById: {
-            		"1": false, 
-                "2": false
-            }
-        },
-        userEdit: {
-        		isFetchingById: {},
-            isErrorById: {}
-        }
-    },
-    ui: {
-        projectList: {
-            
-        },
-        projectCrud: { // The screen for creating, updating, deleting.
-            [projectId]: { // Every project that is fetched by this ui will have one of these.
-                isFetching: false,
-                isLoaded: false,
-                isError: false,
-                isEditing: false,
-            }
-        }
-    },
-    entities: {
-    	users: {},
-        roles: {},
-        applications: {},
-        projects: {}
+  app: {
+    currentUserId: false,
+    isLoaded: false,
+    isFetching: false,
+    isError: false,
+  },
+  //
+  projectCollection: {
+    [hash]: {
+      isFetching: false,
+      isLoaded: false,
+      isError: false
     }
+  },
+  // when fetching individual projects we 
+  // also need to fetch roles, users and
+  // applications.
+  project: {
+    [projectId]: {
+      isFetching: false,
+      isLoaded: false,
+      isError: false,
+      isEditing: false,
+    }
+  },
+  // entities are just by id, no other state.
+  // examples: users: { "1" { name: "myname" }}
+  entities: {
+    users: {},
+    roles: {},
+    applications: {},
+    projects: {}
+  }
 }
 ```
