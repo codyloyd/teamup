@@ -38,6 +38,26 @@ const createState = ({
   byId, allIds, isFetching, errorMessage
 })
 
+
+
+// You were missing testing the default value of
+// the reducer with no action passed in. See if you
+// can finished creating this test. I believe I have an example
+// in the example branch.
+
+describe('usersReducer', ({test}) => {
+  test('...default state', ({end, deepEqual}) => {
+    const msg = 'it should return the default state'
+    const actual = null
+    const expected = null
+    deepEqual(actual, expected, msg)
+    end()
+  })
+})
+
+// Testing each state slice reducer means you
+// will need to create more tests. You can simplify
+// by testing each action on the real reducer.
 describe('byId', ({test}) => {
   test('FETCH_USERS_SUCCESSFUL', assert => {
     const msg = 'users should be added by id when fetched'
