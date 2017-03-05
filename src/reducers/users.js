@@ -1,6 +1,8 @@
 import {combineReducers} from 'redux'
 import * as api from '../api'
-
+import {
+  SIGN_IN_SUCCESSFUL
+} from './currentUser'
 // ** action types
 const FETCH_USERS_REQUESTED = 'FETCH_USERS_REQUESTED'
 const FETCH_USERS_SUCCESSFUL = 'FETCH_USERS_SUCCESSFUL'
@@ -47,6 +49,11 @@ export const byId = (state = defaultState.byId, action = 'NONE') => {
   switch (type) {
     case FETCH_USERS_SUCCESSFUL:
       return {...state, ...response}
+    case SIGN_IN_SUCCESSFUL:
+      return {
+        ...state,
+        [action.user.uid]: action.user
+      }
     default:
       return state
   }
@@ -56,8 +63,10 @@ export const allIds = (state = defaultState.allIds, action = 'NONE') => {
   const {type, response} = action
   switch (type) {
     case FETCH_USERS_SUCCESSFUL:
-      const ids = Object.keys(response).filter(id => state.indexOf(id) < 0)
+      const ids = Object.keys(response).filter(uid => state.indexOf(uid) < 0)
       return [...state, ...ids]
+    case SIGN_IN_SUCCESSFUL:
+      return [...state, ...action.user.uid]
     default:
       return state
   }

@@ -7,7 +7,7 @@ const deepFreeze = (...args) => args.forEach(o => {
 })
 
 const createUser = ({
-  id = '01',
+  uid = '01',
   displayName = 'User',
   githubUsername = 'username',
   signedUp = '123456',
@@ -15,7 +15,7 @@ const createUser = ({
   applications = [],
   roles = []
 } = {}) => ({
-  id, displayName, githubUsername, signedUp, projectsOwned, applications, roles
+  uid, displayName, githubUsername, signedUp, projectsOwned, applications, roles
 })
 
 describe('currentUser', ({test}) => {
@@ -24,7 +24,7 @@ describe('currentUser', ({test}) => {
     const stateBefore = currentUser()
     const action = signInSuccessful(createUser())
     deepFreeze(stateBefore, action)
-    const expected = createUser()
+    const expected = '01'
     const actual = currentUser(stateBefore, action)
     assert.deepEqual(actual, expected, msg)
     assert.end()
@@ -34,7 +34,7 @@ describe('currentUser', ({test}) => {
     const stateBefore = createUser()
     const action = signOutSuccessful()
     deepFreeze(stateBefore, action)
-    const expected = null
+    const expected = false
     const actual = currentUser(stateBefore, action)
     assert.deepEqual(actual, expected, msg)
     assert.end()

@@ -28,7 +28,7 @@ const mapStateToProps = (state) => {
     // All of these should not be accessing the state directly.
     // It should be coming from reducer selectors in the future.
     loggedIn: !!state.app.currentUser,
-    currentUser: state.app.currentUser || {}
+    currentUser: state.entities.users[state.app.currentUser] || {}
   }
 }
 

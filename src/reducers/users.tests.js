@@ -1,6 +1,6 @@
 import describe from 'tape'
 import freeze from 'deep-freeze'
-import {
+import reducer, {
   byId,
   allIds,
   isFetching,
@@ -10,11 +10,15 @@ import {
   fetchUsersFailed
 } from './users'
 
+import {
+  signInSuccessful
+} from './currentUser'
+
 const deepFreeze = (...args) => args.forEach(o => {
   if (o) freeze(o)
 })
 const createUser = ({
-  id = '01',
+  uid = '01',
   displayName = 'User',
   githubUsername = 'username',
   signedUp = '123456',
@@ -22,7 +26,16 @@ const createUser = ({
   applications = [],
   roles = []
 } = {}) => ({
-  id, displayName, githubUsername, signedUp, projectsOwned, applications, roles
+  uid, displayName, githubUsername, signedUp, projectsOwned, applications, roles
+})
+
+const createState = ({
+  byId = {},
+  allIds = [],
+  isFetching = false,
+  errorMessage = null
+} = {}) => ({
+  byId, allIds, isFetching, errorMessage
 })
 
 describe('byId', ({test}) => {
@@ -30,7 +43,7 @@ describe('byId', ({test}) => {
     const msg = 'users should be added by id when fetched'
     const stateBefore = byId()
     const users = {
-      '01': createUser('01'),
+      '01': createUser('01'), // Notice that your not passing an object here, so all these items are the same.
       '02': createUser('02'),
       '03': createUser('03')
     }
@@ -118,5 +131,26 @@ describe('errorMessage', ({test}) => {
     const actual = errorMessage(stateBefore, action)
     assert.deepEqual(actual, expected, msg)
     assert.end()
+  })
+})
+
+describe('signInSuccessful()', ({test}) => {
+  test('after signing in', ({end, deepEqual}) => {
+    const msg = 'it should recieve the user entity of the signed in user';
+
+    const state = reducer()
+    const user = createUser({uid: '1'})
+    deepFreeze(state)
+    deepFreeze(user)
+
+    const expected = createState({
+      byId: {[user.uid]: user},
+      allIds: [user.uid]
+    })
+
+    const actual = reducer(state, signInSuccessful(user))
+
+    deepEqual(actual, expected, msg)
+    end()
   })
 })

@@ -15,14 +15,14 @@ export const signOutSuccessful = () => ({
 // ** async functions **
 
 // ** reducers **
-const defaultState = null
+const defaultState = false
 export const currentUser = (state = defaultState, action = {}) => {
   const {type, user} = action
   switch (type) {
     case SIGN_IN_SUCCESSFUL:
-      return user
+      return user.uid
     case SIGN_OUT_SUCCESSFUL:
-      return null
+      return false
     default:
       return state
   }
