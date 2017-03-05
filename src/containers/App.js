@@ -25,8 +25,24 @@ class App extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    loggedIn: !!state.app.currentUser
+    // All of these should not be accessing the state directly.
+    // It should be coming from reducer selectors in the future.
+    loggedIn: !!state.app.currentUser,
+    currentUser: state.app.currentUser || {}
   }
+}
+
+const {
+  bool, object
+} = React.PropTypes
+
+App.propTypes = {
+  loggedIn: bool.isRequired,
+  currentUser: object.isRequired
+}
+
+App.defaultProps = {
+
 }
 
 export default connect(mapStateToProps, {})(App)
