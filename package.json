@@ -21,6 +21,8 @@
     "eslint-plugin-promise": "^3.4.2",
     "eslint-plugin-react": "^6.10.0",
     "eslint-plugin-standard": "^2.0.1",
+    "node-sass": "^4.5.0",
+    "npm-run-all": "^4.0.2",
     "react": "^15.4.2",
     "react-scripts": "0.9.0",
     "tap-spec": "^4.1.1",
@@ -28,6 +30,7 @@
     "watch": "^1.0.2"
   },
   "dependencies": {
+    "bulma": "^0.3.2",
     "firebase": "^3.6.10",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
@@ -40,9 +43,12 @@
   "scripts": {
     "test:unit": "tape -r babel-register src/test/test-unit.js | tap-spec",
     "test:watch": "watch 'reset && npm run --silent test:unit' src",
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
+    "build-js": "react-scripts build",
+    "build-css": "node-sass src/ -o src/",
+    "start-js": "react-scripts start",
+    "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
+    "build": "npm-run-all -p build-css build-js",
+    "start": "npm-run-all -p watch-css start-js",
     "eject": "react-scripts eject"
   }
 }

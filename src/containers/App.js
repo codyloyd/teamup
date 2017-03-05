@@ -2,8 +2,6 @@ import React, {Component} from 'react'
 import {connect} from 'react-redux'
 import Header from '../components/header'
 import Footer from '../components/footer'
-import './App.css'
-
 
 class App extends Component {
   render () {
@@ -11,12 +9,18 @@ class App extends Component {
     return (
       <div className="App">
         <Header {...this.props} />
-        <div className="App-header">
-        </div>
-        <p className="App-intro">
-          All your projects are belong to us!
-        </p>
-        {children}
+        <section className="hero is-primary">
+          <div className="hero-body">
+            <div className="container">
+              <h1 className="title">
+                All your projects are belong to us!
+              </h1>
+            </div>
+          </div>
+        </section>
+        <section className="section">
+          {children}
+        </section>
         <Footer />
       </div>
     )
