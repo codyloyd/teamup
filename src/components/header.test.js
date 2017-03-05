@@ -32,28 +32,39 @@ describe('Header', (nest) => {
     expected = false
     equal(actual, expected, msg)
 
-    end()
-  })
-  nest.test('...logged in', ({end, equal}) => {
-    let msg, actual, expected, output
-
-    const props = createProps()
-
-    const $ = dom.load(render(<Header { ...props }/>))
-
-    msg = 'Do not display the the sign in button'
-    output = $('.sign-in').contents().length
-    actual = output > 0
-    expected = true
-    equal(actual, expected, msg)
-
-    msg = 'display the sign out button'
-    output = $('.sign-out').contents().length
+    msg = 'Do not display the profile button'
+    output = $('.profile').contents().length
     actual = output > 0
     expected = false
     equal(actual, expected, msg)
 
     end()
   })
-})
+  nest.test('...logged in', ({end, equal}) => {
+    let msg, actual, expected, output
 
+    const props = createProps({loggedIn: true})
+
+    const $ = dom.load(render(<Header { ...props }/>))
+
+    msg = 'Do not display the the sign in button'
+    output = $('.sign-in').contents().length
+    actual = output > 0
+    expected = false
+    equal(actual, expected, msg)
+
+    msg = 'display the sign out button'
+    output = $('.sign-out').contents().length
+    actual = output > 0
+    expected = true
+    equal(actual, expected, msg)
+
+    msg = 'Display the profile button'
+    output = $('.profile').contents().length
+    actual = output > 0
+    expected = true
+    equal(actual, expected, msg)
+
+    end()
+  })
+})

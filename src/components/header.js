@@ -24,6 +24,18 @@ const SignInOutButton = ({loggedIn = false}) => {
     </a>
   )
 }
+const Profile = ({loggedIn = false}) => {
+  if (loggedIn) {
+    return (
+      <Link to="/profile/" className="nav-item is-tab profile">
+        Profile
+      </Link>
+    )
+  }
+  return (
+    <span></span>
+  )
+}
 const header = (props) => {
   return (
     <nav className="nav has-shadow">
@@ -43,9 +55,7 @@ const header = (props) => {
         <div className="nav-right nav-menu">
           <Link to="/projects/" className="nav-item is-tab is-hidden-tablet">Projects</Link>
           <Link to="/project/new/" className="nav-item is-tab is-hidden-tablet">Create New Project</Link>
-          <Link to="/profile/" className="nav-item is-tab">
-            Profile
-          </Link>
+          <Profile {...props} />
           <SignInOutButton {...props} />
         </div>
       </div>
