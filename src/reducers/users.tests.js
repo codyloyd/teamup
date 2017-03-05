@@ -38,18 +38,11 @@ const createState = ({
   byId, allIds, isFetching, errorMessage
 })
 
-
-
-// You were missing testing the default value of
-// the reducer with no action passed in. See if you
-// can finished creating this test. I believe I have an example
-// in the example branch.
-
 describe('usersReducer', ({test}) => {
   test('...default state', ({end, deepEqual}) => {
     const msg = 'it should return the default state'
-    const actual = null
-    const expected = null
+    const actual = reducer()
+    const expected = createState()
     deepEqual(actual, expected, msg)
     end()
   })
@@ -156,7 +149,7 @@ describe('errorMessage', ({test}) => {
 
 describe('signInSuccessful()', ({test}) => {
   test('after signing in', ({end, deepEqual}) => {
-    const msg = 'it should recieve the user entity of the signed in user';
+    const msg = 'it should recieve the user entity of the signed in user'
 
     const state = reducer()
     const user = createUser({uid: '1'})
