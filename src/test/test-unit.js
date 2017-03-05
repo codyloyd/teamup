@@ -1,7 +1,7 @@
 // This file should import all the unit test files
 
 // Components
-// import '../components/_example-button.test.js'
+import '../components/header.test.js'
 
 // Reducers
 // import '../reducers/_exampleProjectReducer.test.js'

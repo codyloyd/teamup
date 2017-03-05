@@ -73,10 +73,11 @@
             
         },
         projectCrud: { // The screen for creating, updating, deleting.
-            [projectId]: { // Every project will have one of these.
+            [projectId]: { // Every project that is fetched by this ui will have one of these.
                 isFetching: false,
                 isLoaded: false,
                 isError: false,
+                isEditing: false,
             }
         }
     },
