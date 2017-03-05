@@ -33,7 +33,7 @@ const Profile = ({loggedIn = false}) => {
     )
   }
   return (
-    <span></span>
+    null
   )
 }
 const header = (props) => {
