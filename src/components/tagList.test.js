@@ -12,8 +12,8 @@ const createProps = ({
   tags
 })
 
-describe('component', ({test}) => {
-  test('item', ({equal, end}) => {
+describe('tagList', ({test}) => {
+  test('tags are rendered', ({equal, end}) => {
     let msg, actual, expected, output
     const props = createProps()
     const $ = dom.load(render(<TagList { ...props }/>))
@@ -21,6 +21,18 @@ describe('component', ({test}) => {
     output = $('.tag-list > .tag')
     actual = output.length
     expected = 3
+    equal(actual, expected, msg)
+    end()
+  })
+
+  test('heading is not rendered if no tags present', ({equal, end}) => {
+    let msg, actual, expected, output
+    const props = createProps({tags: []})
+    const $ = dom.load(render(<TagList { ...props }/>))
+
+    output = $('.tag-list > .heading')
+    actual = output.length
+    expected = 0
     equal(actual, expected, msg)
     end()
   })
