@@ -38,7 +38,7 @@ describe('ProjectsList', (nest) => {
     const $ = dom.load(render(<ProjectsList { ...props }/>))
 
     msg = 'Something is being rendered but should not be'
-    output = $('.projects-list').contents().length
+    output = $('.projects-list').children().length
     actual = output > 0
     expected = false
     equal(actual, expected, msg)
@@ -50,17 +50,19 @@ describe('ProjectsList', (nest) => {
     let msg, actual, expected, output
 
     const props = {
-      '01': createProject({id: '01'}),
-      '02': createProject({id: '02'}),
-      '03': createProject({id: '03'})
+      projects: [
+        createProject({id: '01'}),
+        createProject({id: '02'}),
+        createProject({id: '03'})
+      ]
     }
 
     const $ = dom.load(render(<ProjectsList { ...props }/>))
 
     msg = 'The incorrect number of children are being rendered'
-    output = $('.projects-list').contents().length
-    actual = output > 0
-    expected = false
+    output = $('.projects-list').children().length
+    actual = output === 3
+    expected = true
     equal(actual, expected, msg)
 
     end()

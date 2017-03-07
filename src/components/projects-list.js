@@ -1,13 +1,26 @@
 import React from 'react'
 
-export default props => (
+const Project = (props) => (
+  <li>
+    {props.name}
+  </li>
+)
+
+const ProjectsList = ({ projects = [] }) => (
   <section className="section">
     <div className="container">
       <div className="content">
         <ul className="projects-list">
-          <li>{props.projects}</li>
+          {projects.map(project =>
+                <Project
+                  key={project.id}
+                  {...project}
+                />
+              )}
         </ul>
       </div>
     </div>
   </section>
 )
+
+export default ProjectsList
