@@ -1,26 +1,31 @@
 import React from 'react'
 
-const Project = (props) => (
-  <li>
-    {props.name}
-  </li>
-)
+const ProjectsListProject = (props) => {
+  const { name, summary, description } = props
+  return (
+    <li>
+      <h3>{name}</h3>
+      {summary}<br />
+      {description}
+      <br />
+      <br />
+    </li>
+  )
+}
 
 const ProjectsList = ({ projects = [] }) => (
-  <section className="section">
-    <div className="container">
-      <div className="content">
-        <ul className="projects-list">
-          {projects.map(project =>
-                <Project
-                  key={project.id}
-                  {...project}
-                />
-              )}
-        </ul>
-      </div>
+  <div className="container">
+    <div className="content">
+      <ul className="projects-list" style={{listStyle: 'none'}}>
+        {projects.map(project =>
+              <ProjectsListProject
+                key={project.id}
+                {...project}
+              />
+            )}
+      </ul>
     </div>
-  </section>
+  </div>
 )
 
 export default ProjectsList

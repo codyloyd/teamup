@@ -3,8 +3,7 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router'
 import App from '../containers/App'
 import {Provider} from 'react-redux'
 import Project from '../containers/Project'
-const Projects = props => (<h1>Projects</h1>)
-// const Project = props => (<h1>Project</h1>)
+import Projects from '../containers/Projects'
 const Profile = props => (<h1>Profile</h1>)
 const NoMatch = props => (<h1>No Match</h1>)
 const LandingPage = props => (<h1>LandingPage</h1>)
