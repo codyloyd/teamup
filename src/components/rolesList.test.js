@@ -35,7 +35,7 @@ describe('Roles List', ({test}) => {
     const props = createProps()
 
     const $ = dom.load(render(<RolesList { ...props }/>))
-    output = $('.roles-list-role')
+    output = $('.role-details')
     actual = output.length
     expected = 2
     equal(actual, expected, msg)
