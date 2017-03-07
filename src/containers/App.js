@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header {...this.props} />
-        <section className="hero is-primary">
+        <section className="hero is-pattern is-primary">
           <div className="hero-body">
             <div className="container">
               <h1 className="title is-1">
