@@ -4,7 +4,8 @@
 import '../components/header.test.js'
 import '../components/projectDetails.test'
 import '../components/rolesList.test'
-import '../components/projects-list.test.js'
+import '../components/projects-list.test'
+import '../components/tagList.test'
 
 // Reducers
 import '../reducers/projects.tests'

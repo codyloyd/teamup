@@ -68,10 +68,10 @@ describe('Project Details', ({test}) => {
 
     const $ = dom.load(render(<ProjectDetails { ...props }/>))
 
-    msg = 'tags are displayed'
-    output = $('.tag-list > .tag')
+    msg = 'tag list is displayed'
+    output = $('.tag-list')
     actual = output.length
-    expected = props.tags.length
+    expected = 1
     equal(actual, expected, msg)
     end()
   })
