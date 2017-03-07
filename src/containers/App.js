@@ -12,9 +12,12 @@ class App extends Component {
         <section className="hero is-primary">
           <div className="hero-body">
             <div className="container">
-              <h1 className="title">
-                All your projects are belong to us!
+              <h1 className="title is-1">
+                Teamup
               </h1>
+              <h2 className="subtitle is-3">
+                Find the right people for your project
+              </h2>
             </div>
           </div>
         </section>

@@ -4,9 +4,9 @@
 import '../components/header.test.js'
 import '../components/projectDetails.test'
 import '../components/rolesList.test'
+import '../components/projects-list.test.js'
 
 // Reducers
-// import '../reducers/_exampleProjectReducer.test.js'
 import '../reducers/projects.tests'
 import '../reducers/roles.tests'
 import '../reducers/applications.tests'
