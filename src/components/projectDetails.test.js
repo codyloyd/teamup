@@ -28,8 +28,8 @@ describe('Project Details', ({test}) => {
 
     msg = 'Project Title is displayed'
     output = $('.project-title').text()
-    actual = output === props.title
-    expected = true
+    actual = output
+    expected = props.title
     equal(actual, expected, msg)
     end()
   })
@@ -42,8 +42,8 @@ describe('Project Details', ({test}) => {
 
     msg = 'Project Summary is displayed'
     output = $('.project-summary').text()
-    actual = output === props.summary
-    expected = true
+    actual = output
+    expected = props.summary
     equal(actual, expected, msg)
     end()
   })
@@ -56,8 +56,22 @@ describe('Project Details', ({test}) => {
 
     msg = 'Project Description is displayed'
     output = $('.project-description').text()
-    actual = output === props.description
-    expected = true
+    actual = output
+    expected = props.description
+    equal(actual, expected, msg)
+    end()
+  })
+  test('tags', ({end, equal}) => {
+    let msg, actual, expected, output
+
+    const props = createProps()
+
+    const $ = dom.load(render(<ProjectDetails { ...props }/>))
+
+    msg = 'tags are displayed'
+    output = $('.tag-list > .tag')
+    actual = output.length
+    expected = props.tags.length
     equal(actual, expected, msg)
     end()
   })
