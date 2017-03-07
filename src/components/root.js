@@ -1,12 +1,13 @@
 import React from 'react'
-import { Router, Route, browserHistory, IndexRoute } from 'react-router'
-import App from '../containers/App'
 import {Provider} from 'react-redux'
+import { Router, Route, browserHistory, IndexRoute } from 'react-router'
+
+import App from '../containers/App'
 import Project from '../containers/Project'
 import Projects from '../containers/Projects'
-const Profile = props => (<h1>Profile</h1>)
-const NoMatch = props => (<h1>No Match</h1>)
-const LandingPage = props => (<h1>LandingPage</h1>)
+const Profile = props => (<h1 className="title">Your Profile</h1>)
+const NoMatch = props => (<h1 className="title">404 Error Message</h1>)
+const LandingPage = props => (<h1 className="title">Welcome</h1>)
 
 export default ({store}) => {
   return (

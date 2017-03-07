@@ -3,7 +3,7 @@ import React from 'react'
 import dom from 'cheerio'
 import ReactDOMServer from 'react-dom/server'
 
-import ProjectsList from './projects-list'
+import ProjectsList from './projectsList'
 
 const render = ReactDOMServer.renderToStaticMarkup
 
@@ -29,7 +29,7 @@ const createProject = ({
   id, ownerId, name, description, summary, status, roles, tags, timeStamp, lastUpdated
 })
 
-describe('ProjectsList', (nest) => {
+describe('ProjectsListProject', (nest) => {
   nest.test('...no children rendered for empty array', ({end, equal}) => {
     let msg, actual, expected, output
 
@@ -37,10 +37,10 @@ describe('ProjectsList', (nest) => {
 
     const $ = dom.load(render(<ProjectsList { ...props }/>))
 
-    msg = 'Something is being rendered but should not be'
-    output = $('.projects-list').children().length
-    actual = output > 0
-    expected = false
+    msg = 'Nothing was rendered'
+    output = $('.projects-list > .projects-list-project')
+    actual = output.length
+    expected = 0
     equal(actual, expected, msg)
 
     end()
@@ -59,10 +59,10 @@ describe('ProjectsList', (nest) => {
 
     const $ = dom.load(render(<ProjectsList { ...props }/>))
 
-    msg = 'The incorrect number of children are being rendered'
-    output = $('.projects-list').children().length
-    actual = output === 3
-    expected = true
+    msg = 'The correct number of children are being rendered'
+    output = $('.projects-list > .projects-list-project')
+    actual = output.length
+    expected = 3
     equal(actual, expected, msg)
 
     end()

@@ -1,11 +1,11 @@
 import React from 'react'
 
 const ProjectsListProject = (props) => {
-  const { name, summary, description } = props
+  const { name, summary, description, id } = props
   return (
-    <li>
+    <li className="projects-list-project">
       <h3>{name}</h3>
-      {summary}<br />
+      {summary} ({id})<br />
       {description}
       <br />
       <br />
