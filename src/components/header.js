@@ -42,7 +42,7 @@ const header = (props) => {
       <div className="container">
         <div className="nav-left">
           <Link to="/" className="nav-item">
-            Team Up
+            Teamup
           </Link>
           <Link to="/projects/" className="nav-item is-tab is-hidden-mobile">Projects</Link>
           <Link to="/project/new/" className="nav-item is-tab is-hidden-mobile">Create New Project</Link>
