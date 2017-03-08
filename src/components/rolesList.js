@@ -1,10 +1,19 @@
 import React from 'react'
 import RoleDetails from './roleDetails'
 
-export default ({roles}) => (
-  <div className="section">
+const RolesList = ({roles}) => (
+  <div className="">
     {roles.map(role => (
-      <RoleDetails />
+      <RoleDetails
+        name={role.name}
+        description={role.description}
+      />
     ))}
   </div>
 )
+
+RolesList.propTypes = {
+  roles: React.PropTypes.array.isRequired
+}
+
+export default RolesList
