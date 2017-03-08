@@ -13,6 +13,8 @@ const createRole = ({
 } = {}) => ({
   id, projectId, name, status, description, applications, users
 })
+// The stuff below will of course be replaced with data from the database..
+// I just threw in some dummy data so I could check the styling.
 
 export default ({props}) => {
   return (
