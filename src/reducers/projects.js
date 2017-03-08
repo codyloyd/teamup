@@ -15,16 +15,17 @@ export const CREATE_PROJECT_SUCCESSFUL = 'CREATE_PROJECT_SUCCESSFUL'
 
 // ** async actions **
 // these use thunks
+
 export const fetchProject = (id) => (dispatch) => {
   api.fetchProject(id).then(response => {
     dispatch({
-      type: FETCH_PROJECT_SUCCESSFUL,
+      type: FETCH_PROJECTS_SUCCESSFUL,
       response
     })
   })
 }
 
-export const fetchProjects = () => (dispatch) => {
+export const fetchProjects = (id) => (dispatch) => {
   dispatch({type: FETCH_PROJECTS_REQUESTED})
   api.fetchProjects().then(
     response => {

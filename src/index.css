@@ -2578,6 +2578,7 @@ a.nav-item {
   display: flex;
   min-height: 3.5rem;
   position: relative;
+  width: 100%;
   text-align: center;
   z-index: 2; }
   .nav > .container {
@@ -2587,6 +2588,8 @@ a.nav-item {
     width: 100%; }
   .nav.has-shadow {
     box-shadow: 0 2px 3px rgba(10, 10, 10, 0.1); }
+  .nav.is-sticky {
+    position: fixed; }
 
 .pagination,
 .pagination-list {
