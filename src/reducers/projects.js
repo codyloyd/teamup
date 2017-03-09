@@ -77,6 +77,19 @@ export const createProject = (
     }))
 }
 
+// ** selectors **
+export const getSingleProject = (state, id) => {
+  const { entities: { projects: { byId } } } = state
+  return byId && byId[id] ? byId[id] : {}
+}
+export const getProjectRoles = (state, id) => {
+  const { entities: { roles: { byId } } } = state
+  return byId ? Object.values(byId).filter(r => r.projectId === id) : []
+}
+export const getIsFetchingProjects = state => {
+  return state.entities.projects.isFetching
+}
+
 // ** reducers **
 const defaultState = {
   byId: {},
