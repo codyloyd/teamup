@@ -8,20 +8,28 @@ export const fetchProjects = () => {
   })
 }
 
-export const createProject = (project) => {
-  return firebase.database().ref(`projects/${project.id}`).set(project)
+export const createProject = project => {
+  return firebase
+    .database()
+    .ref(`projects/${project.id}`)
+    .set(project)
     .then(() => project)
 }
 // actually.. do we need to fetch individual projects?
 // answer: yes 🔥🔥
-export const fetchProject = (id) => {
-  return firebase.database().ref(`projects/${id}`).once('value')
+export const fetchProject = id => {
+  return firebase
+    .database()
+    .ref(`projects/${id}`)
+    .once('value')
     .then(data => data.val())
 }
 
 // ** role functions **
-export const fetchRoles = (projectId) => {
-  return firebase.database().ref('roles')
+export const fetchRoles = projectId => {
+  return firebase
+    .database()
+    .ref('roles')
     .orderByChild('projectId')
     .equalTo(projectId)
     .once('value')
@@ -29,8 +37,10 @@ export const fetchRoles = (projectId) => {
 }
 
 // ** application functions **
-export const fetchApplications = (projectId) => {
-  return firebase.database().ref('applications')
+export const fetchApplications = projectId => {
+  return firebase
+    .database()
+    .ref('applications')
     .orderByChild('projectId')
     .equalTo(projectId)
     .once('value')
@@ -39,7 +49,9 @@ export const fetchApplications = (projectId) => {
 
 // ** users functions **
 export const fetchUsers = () => {
-  return firebase.database().ref('users')
+  return firebase
+    .database()
+    .ref('users')
     .once('value')
     .then(data => data.val())
 }
