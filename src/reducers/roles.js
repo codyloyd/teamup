@@ -10,7 +10,7 @@ const FETCH_ROLES_FAILED = 'FETCH_ROLES_FAILED'
 const CREATE_ROLE_SUCCESSFUL = 'CREATE_ROLE_SUCCESSFUL'
 
 // ** async actions **
-export const fetchRoles = (projectId) => (dispatch) => {
+export const fetchRoles = projectId => dispatch => {
   dispatch({type: FETCH_ROLES_REQUESTED})
   api.fetchRoles(projectId).then(
     response => {
@@ -49,7 +49,7 @@ export const byId = (state = defaultState.byId, action) => {
 }
 
 export const allIds = (state = defaultState.allIds, action) => {
-  const { type, response } = action
+  const {type, response} = action
   switch (type) {
     case FETCH_ROLES_SUCCESSFUL:
       const newIds = Object.keys(response).filter(k => state.indexOf(k) <= 0)
@@ -62,7 +62,7 @@ export const allIds = (state = defaultState.allIds, action) => {
 }
 
 export const isFetching = (state = defaultState.isFetching, action) => {
-  const { type } = action
+  const {type} = action
   switch (type) {
     case FETCH_ROLES_REQUESTED:
       return true
@@ -75,7 +75,7 @@ export const isFetching = (state = defaultState.isFetching, action) => {
 }
 
 export const errorMessage = (state = defaultState.errorMessage, action) => {
-  const { type } = action
+  const {type} = action
   switch (type) {
     case FETCH_ROLES_FAILED:
       return action.message

@@ -16,7 +16,7 @@ export const CREATE_PROJECT_SUCCESSFUL = 'CREATE_PROJECT_SUCCESSFUL'
 // ** async actions **
 // these use thunks
 
-export const fetchProject = (id) => (dispatch) => {
+export const fetchProject = id => dispatch => {
   console.log(id)
   api.fetchProject(id).then(response => {
     dispatch({
@@ -26,7 +26,7 @@ export const fetchProject = (id) => (dispatch) => {
   })
 }
 
-export const fetchProjects = (id) => (dispatch) => {
+export const fetchProjects = id => dispatch => {
   dispatch({type: FETCH_PROJECTS_REQUESTED})
   api.fetchProjects().then(
     response => {
@@ -44,35 +44,37 @@ export const fetchProjects = (id) => (dispatch) => {
   )
 }
 
-export const createProject = ({
-  id = cuid(),
-  ownerId = '',
-  name = '',
-  summary = '',
-  tags = [],
-  description = '',
-  roles = [],
-  status = 'open',
-  timeStamp = Date.now(),
-  lastUpdated = Date.now()
-}) => (dispatch) => {
-  api.createProject({
-    id,
-    ownerId,
-    name,
-    summary,
-    tags,
-    description,
-    roles,
-    status,
-    timeStamp,
-    lastUpdated
-  }).then(response =>
-    dispatch({
+export const createProject = (
+  {
+    id = cuid(),
+    ownerId = '',
+    name = '',
+    summary = '',
+    tags = [],
+    description = '',
+    roles = [],
+    status = 'open',
+    timeStamp = Date.now(),
+    lastUpdated = Date.now()
+  }
+) => dispatch => {
+  api
+    .createProject({
+      id,
+      ownerId,
+      name,
+      summary,
+      tags,
+      description,
+      roles,
+      status,
+      timeStamp,
+      lastUpdated
+    })
+    .then(response => dispatch({
       type: CREATE_PROJECT_SUCCESSFUL,
       response
-    })
-  )
+    }))
 }
 
 // ** reducers **
@@ -84,7 +86,7 @@ const defaultState = {
 }
 
 export const byId = (state = defaultState.byId, action) => {
-  const { type, response } = action
+  const {type, response} = action
   switch (type) {
     case FETCH_PROJECTS_SUCCESSFUL:
       return {...state, ...response}
@@ -96,7 +98,7 @@ export const byId = (state = defaultState.byId, action) => {
 }
 
 export const allIds = (state = defaultState.allIds, action) => {
-  const { type, response } = action
+  const {type, response} = action
   switch (type) {
     case FETCH_PROJECTS_SUCCESSFUL:
       const newIds = Object.keys(response).filter(k => state.indexOf(k) <= 0)
@@ -109,7 +111,7 @@ export const allIds = (state = defaultState.allIds, action) => {
 }
 
 export const isFetching = (state = defaultState.isFetching, action) => {
-  const { type } = action
+  const {type} = action
   switch (type) {
     case FETCH_PROJECTS_REQUESTED:
       return true
@@ -122,7 +124,7 @@ export const isFetching = (state = defaultState.isFetching, action) => {
 }
 
 export const errorMessage = (state = defaultState.errorMessage, action) => {
-  const { type } = action
+  const {type} = action
   switch (type) {
     case FETCH_PROJECTS_FAILED:
       return action.message

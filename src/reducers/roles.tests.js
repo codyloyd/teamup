@@ -4,7 +4,7 @@ import deepFreeze from 'deep-freeze'
 import {byId, allIds, isFetching, errorMessage} from './roles'
 
 describe('byId', ({test}) => {
-  test('FETCH_ROLES_SUCCESSFUL', (assert) => {
+  test('FETCH_ROLES_SUCCESSFUL', assert => {
     const msg = 'roles should be added by ID when fetched'
     const stateBefore = {}
     deepFreeze(stateBefore)
@@ -39,7 +39,7 @@ describe('byId', ({test}) => {
     assert.deepEqual(actual, expected, msg)
     assert.end()
   })
-  test('FETCH_ROLES_SUCCESSFUL', (assert) => {
+  test('FETCH_ROLES_SUCCESSFUL', assert => {
     const msg = 'roles should not be duped when fetched'
     const stateBefore = {
       '01': {
@@ -90,7 +90,7 @@ describe('byId', ({test}) => {
     assert.deepEqual(actual, expected, msg)
     assert.end()
   })
-  test('CREATE_ROLE_SUCCESSFUL', (assert) => {
+  test('CREATE_ROLE_SUCCESSFUL', assert => {
     const msg = 'roles should be added byId when created'
     const stateBefore = {
       '01': {
@@ -137,7 +137,7 @@ describe('byId', ({test}) => {
 })
 
 describe('allIds', ({test}) => {
-  test('FETCH_ROLES_SUCCESSFUL', (assert) => {
+  test('FETCH_ROLES_SUCCESSFUL', assert => {
     const msg = 'ids should be added to array upon fetching'
     const stateBefore = []
     deepFreeze(stateBefore)
@@ -161,7 +161,7 @@ describe('allIds', ({test}) => {
     assert.deepEqual(actual, expected, msg)
     assert.end()
   })
-  test('FETCH_ROLES_SUCCESSFUL', (assert) => {
+  test('FETCH_ROLES_SUCCESSFUL', assert => {
     const msg = 'only new ids should be added (no dupes)'
     const stateBefore = ['45', '01']
     deepFreeze(stateBefore)
@@ -181,7 +181,7 @@ describe('allIds', ({test}) => {
     assert.deepEqual(actual, expected, msg)
     assert.end()
   })
-  test('CREATE_ROLE_SUCCESSFUL', (assert) => {
+  test('CREATE_ROLE_SUCCESSFUL', assert => {
     const msg = 'id should be added to array when ROLE created'
     const stateBefore = ['01', '02']
     deepFreeze(stateBefore)
@@ -197,7 +197,7 @@ describe('allIds', ({test}) => {
 })
 
 describe('isFetching', ({test}) => {
-  test('FETCH_ROLES_REQUESTED', (assert) => {
+  test('FETCH_ROLES_REQUESTED', assert => {
     const msg = 'isFetching returns true when the ROLE is requested'
     const stateBefore = false
     deepFreeze(stateBefore)
@@ -210,7 +210,7 @@ describe('isFetching', ({test}) => {
     assert.end()
   })
 
-  test('FETCH_ROLES_SUCCESSFUL', (assert) => {
+  test('FETCH_ROLES_SUCCESSFUL', assert => {
     const msg = 'isFetching returns true when the ROLE is requested'
     const stateBefore = true
     deepFreeze(stateBefore)
@@ -223,7 +223,7 @@ describe('isFetching', ({test}) => {
     assert.end()
   })
 
-  test('FETCH_ROLES_FAILED', (assert) => {
+  test('FETCH_ROLES_FAILED', assert => {
     const msg = 'isFetching returns true when the ROLE is requested'
     const stateBefore = true
     deepFreeze(stateBefore)

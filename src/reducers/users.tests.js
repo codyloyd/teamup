@@ -10,32 +10,43 @@ import reducer, {
   fetchUsersFailed
 } from './users'
 
-import {
-  signInSuccessful
-} from './currentUser'
+import {signInSuccessful} from './currentUser'
 
 const deepFreeze = (...args) => args.forEach(o => {
   if (o) freeze(o)
 })
-const createUser = ({
-  uid = '01',
-  displayName = 'User',
-  githubUsername = 'username',
-  signedUp = '123456',
-  projectsOwned = [],
-  applications = [],
-  roles = []
-} = {}) => ({
-  uid, displayName, githubUsername, signedUp, projectsOwned, applications, roles
+const createUser = (
+  {
+    uid = '01',
+    displayName = 'User',
+    githubUsername = 'username',
+    signedUp = '123456',
+    projectsOwned = [],
+    applications = [],
+    roles = []
+  } = {}
+) => ({
+  uid,
+  displayName,
+  githubUsername,
+  signedUp,
+  projectsOwned,
+  applications,
+  roles
 })
 
-const createState = ({
-  byId = {},
-  allIds = [],
-  isFetching = false,
-  errorMessage = null
-} = {}) => ({
-  byId, allIds, isFetching, errorMessage
+const createState = (
+  {
+    byId = {},
+    allIds = [],
+    isFetching = false,
+    errorMessage = null
+  } = {}
+) => ({
+  byId,
+  allIds,
+  isFetching,
+  errorMessage
 })
 
 describe('usersReducer', ({test}) => {

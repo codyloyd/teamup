@@ -3,7 +3,7 @@ export const SIGN_IN_SUCCESSFUL = 'SIGN_IN_SUCCESSFUL'
 export const SIGN_OUT_SUCCESSFUL = 'SIGN_OUT_SUCCESSFUL'
 
 // ** action creators **
-export const signInSuccessful = (user) => ({
+export const signInSuccessful = user => ({
   type: SIGN_IN_SUCCESSFUL,
   user
 })

@@ -6,16 +6,24 @@ import RoleDetails from './roleDetails'
 
 const render = ReactDOMServer.renderToStaticMarkup
 
-const createProps = ({
-  id = '01',
-  projectId = '01',
-  name = 'role name',
-  status = 'open',
-  description = 'this is a description of the role',
-  applications = ['01', '02'],
-  users = null
-} = {}) => ({
-  id, projectId, name, status, description, applications, users
+const createProps = (
+  {
+    id = '01',
+    projectId = '01',
+    name = 'role name',
+    status = 'open',
+    description = 'this is a description of the role',
+    applications = ['01', '02'],
+    users = null
+  } = {}
+) => ({
+  id,
+  projectId,
+  name,
+  status,
+  description,
+  applications,
+  users
 })
 
 describe('Role Details', ({test}) => {
@@ -23,7 +31,7 @@ describe('Role Details', ({test}) => {
     let msg, actual, expected, output
     msg = 'the name is inserted into Role Details'
     const props = createProps()
-    const $ = dom.load(render(<RoleDetails { ...props }/>))
+    const $ = dom.load(render(<RoleDetails {...props} />))
     output = $('.role-name').text()
     actual = output
     expected = props.name
@@ -34,7 +42,7 @@ describe('Role Details', ({test}) => {
     let msg, actual, expected, output
     msg = 'the role description is inserted into Role Details'
     const props = createProps()
-    const $ = dom.load(render(<RoleDetails { ...props }/>))
+    const $ = dom.load(render(<RoleDetails {...props} />))
     output = $('.role-description').text()
     actual = output
     expected = props.description

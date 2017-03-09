@@ -6,16 +6,24 @@ import ProjectDetails from './projectDetails'
 
 const render = ReactDOMServer.renderToStaticMarkup
 
-const createProps = ({
-  projectId = '1111',
-  title = 'title',
-  description = 'project description',
-  summary = 'project summary',
-  tags = ['tag1', 'tag2'],
-  ownerId = '1234',
-  ownerDisplayName = 'ownerName'
-} = {}) => ({
-  projectId, title, description, summary, tags, ownerId, ownerDisplayName
+const createProps = (
+  {
+    projectId = '1111',
+    title = 'title',
+    description = 'project description',
+    summary = 'project summary',
+    tags = ['tag1', 'tag2'],
+    ownerId = '1234',
+    ownerDisplayName = 'ownerName'
+  } = {}
+) => ({
+  projectId,
+  title,
+  description,
+  summary,
+  tags,
+  ownerId,
+  ownerDisplayName
 })
 
 describe('Project Details', ({test}) => {
@@ -24,7 +32,7 @@ describe('Project Details', ({test}) => {
 
     const props = createProps()
 
-    const $ = dom.load(render(<ProjectDetails { ...props }/>))
+    const $ = dom.load(render(<ProjectDetails {...props} />))
 
     msg = 'Project Title is displayed'
     output = $('.project-title').text()
@@ -38,7 +46,7 @@ describe('Project Details', ({test}) => {
 
     const props = createProps()
 
-    const $ = dom.load(render(<ProjectDetails { ...props }/>))
+    const $ = dom.load(render(<ProjectDetails {...props} />))
 
     msg = 'Project Summary is displayed'
     output = $('.project-summary').text()
@@ -52,7 +60,7 @@ describe('Project Details', ({test}) => {
 
     const props = createProps()
 
-    const $ = dom.load(render(<ProjectDetails { ...props }/>))
+    const $ = dom.load(render(<ProjectDetails {...props} />))
 
     msg = 'Project Description is displayed'
     output = $('.project-description').text()
@@ -66,7 +74,7 @@ describe('Project Details', ({test}) => {
 
     const props = createProps()
 
-    const $ = dom.load(render(<ProjectDetails { ...props }/>))
+    const $ = dom.load(render(<ProjectDetails {...props} />))
 
     msg = 'tag list is displayed'
     output = $('.tag-list')

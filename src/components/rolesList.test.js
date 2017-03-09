@@ -6,24 +6,31 @@ import RolesList from './rolesList'
 
 const render = ReactDOMServer.renderToStaticMarkup
 
-const createRole = ({
-  id = '01',
-  projectId = '02',
-  name = 'role name',
-  status = 'open',
-  description = 'description of the role',
-  applications = ['11', '22'],
-  users = ['33']
-} = {}) => ({
-  id, projectId, name, status, description, applications, users
+const createRole = (
+  {
+    id = '01',
+    projectId = '02',
+    name = 'role name',
+    status = 'open',
+    description = 'description of the role',
+    applications = ['11', '22'],
+    users = ['33']
+  } = {}
+) => ({
+  id,
+  projectId,
+  name,
+  status,
+  description,
+  applications,
+  users
 })
 
-const createProps = ({
-  roles = [
-    createRole(),
-    createRole({id: '02', name: 'role 2 name'})
-  ]
-} = {}) => ({
+const createProps = (
+  {
+    roles = [createRole(), createRole({id: '02', name: 'role 2 name'})]
+  } = {}
+) => ({
   roles
 })
 
@@ -34,7 +41,7 @@ describe('Roles List', ({test}) => {
 
     const props = createProps()
 
-    const $ = dom.load(render(<RolesList { ...props }/>))
+    const $ = dom.load(render(<RolesList {...props} />))
     output = $('.role-details')
     actual = output.length
     expected = 2

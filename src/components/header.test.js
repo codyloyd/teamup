@@ -6,19 +6,21 @@ import Header from './header'
 
 const render = ReactDOMServer.renderToStaticMarkup
 
-const createProps = ({
-  loggedIn = false
-} = {}) => ({
+const createProps = (
+  {
+    loggedIn = false
+  } = {}
+) => ({
   loggedIn
 })
 
-describe('Header', (nest) => {
+describe('Header', nest => {
   nest.test('...logged out', ({end, equal}) => {
     let msg, actual, expected, output
 
     const props = createProps()
 
-    const $ = dom.load(render(<Header { ...props }/>))
+    const $ = dom.load(render(<Header {...props} />))
 
     msg = 'Display the sign in button'
     output = $('.sign-in').contents().length
@@ -45,7 +47,7 @@ describe('Header', (nest) => {
 
     const props = createProps({loggedIn: true})
 
-    const $ = dom.load(render(<Header { ...props }/>))
+    const $ = dom.load(render(<Header {...props} />))
 
     msg = 'Do not display the the sign in button'
     output = $('.sign-in').contents().length

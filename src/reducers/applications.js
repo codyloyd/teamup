@@ -10,18 +10,18 @@ const FETCH_APPLICATIONS_FAILED = 'FETCH_APPLICATIONS_FAILED'
 const CREATE_APPLICATION_SUCCESSFUL = 'CREATE_APPLICATION_SUCCESSFUL'
 
 // ** action creators **
-export const fetchApplicationsSuccessful = (response) => ({
+export const fetchApplicationsSuccessful = response => ({
   type: FETCH_APPLICATIONS_SUCCESSFUL,
   response
 })
 
-export const createApplicationSuccessful = (response) => ({
+export const createApplicationSuccessful = response => ({
   type: CREATE_APPLICATION_SUCCESSFUL,
   response
 })
 
 // ** async actions **
-export const fetchApplications = (projectId) => (dispatch) => {
+export const fetchApplications = projectId => dispatch => {
   dispatch({type: FETCH_APPLICATIONS_REQUESTED})
   api.fetchApplications(projectId).then(
     response => {

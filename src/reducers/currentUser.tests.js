@@ -6,16 +6,24 @@ const deepFreeze = (...args) => args.forEach(o => {
   if (o) freeze(o)
 })
 
-const createUser = ({
-  uid = '01',
-  displayName = 'User',
-  githubUsername = 'username',
-  signedUp = '123456',
-  projectsOwned = [],
-  applications = [],
-  roles = []
-} = {}) => ({
-  uid, displayName, githubUsername, signedUp, projectsOwned, applications, roles
+const createUser = (
+  {
+    uid = '01',
+    displayName = 'User',
+    githubUsername = 'username',
+    signedUp = '123456',
+    projectsOwned = [],
+    applications = [],
+    roles = []
+  } = {}
+) => ({
+  uid,
+  displayName,
+  githubUsername,
+  signedUp,
+  projectsOwned,
+  applications,
+  roles
 })
 
 describe('currentUser', ({test}) => {
