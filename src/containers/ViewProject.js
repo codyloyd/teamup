@@ -19,7 +19,6 @@ class ViewProject extends React.Component {
       return <Loading />
     }
     const {title, summary, description, tags} = this.props.project
-    console.log(this.props)
     return (
       <div className='view-project container'>
         <div className="column is-10 is-offset-1">
@@ -38,18 +37,28 @@ class ViewProject extends React.Component {
   }
 }
 
+
+// not sure where to put these
+const getSingleProject = (state, id) => {
+  const {entities: {projects: {byId}}} = state
+  return (byId && byId[id]) ? byId[id] : {}
+}
+const getProjectRoles = (state, id) => {
+  const {entities: {roles: {byId}}} = state
+  return (byId)
+    ? Object.values(byId).filter(r => r.projectId === id)
+    : []
+}
+const getIsFetchingProjects = (state) => {
+  return state.entities.projects.isFetching
+}
+
 const mapStateToProps = (state, ownProps) => {
   const {params: {id}} = ownProps
-  const {entities: {projects: {byId}}} = state
-  const project = (byId && byId[id]) ? byId[id] : {}
-  const {entities: {roles}} = state
-  const projectRoles = (roles.byId)
-    ? Object.values(roles.byId).filter(r => r.projectId === id)
-    : []
   return {
-    isFetching: state.entities.projects.isFetching,
-    projectRoles,
-    project
+    isFetching: getIsFetchingProjects(state),
+    project: getSingleProject(state, id),
+    projectRoles: getProjectRoles(state, id)
   }
 }
 
