@@ -22,13 +22,13 @@ class ViewProject extends React.Component {
     if (this.props.isFetching) {
       return <Loading />
     }
-    const {title, summary, description, tags} = this.props.project
+    const {name, summary, description, tags} = this.props.project
     return (
       <div className="view-project container">
         <div className="column is-10 is-offset-1">
           <p className="heading">Project Details:</p>
           <ProjectDetails
-            title={title}
+            title={name}
             summary={summary}
             description={description}
             tags={tags || []}
