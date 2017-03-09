@@ -17,9 +17,10 @@ export const CREATE_PROJECT_SUCCESSFUL = 'CREATE_PROJECT_SUCCESSFUL'
 // these use thunks
 
 export const fetchProject = (id) => (dispatch) => {
+  console.log(id)
   api.fetchProject(id).then(response => {
     dispatch({
-      type: FETCH_PROJECTS_SUCCESSFUL,
+      type: FETCH_PROJECT_SUCCESSFUL,
       response
     })
   })
