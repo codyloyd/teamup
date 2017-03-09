@@ -20,7 +20,7 @@ export default ({store}) => {
           <Route path="/projects/" component={Projects}/>
           <Route path="/projects/tag/:id/" component={Projects}/>
           <Route path="/projects/category/:id/" component={Projects}/>
-          <Route path="/projects/new/" component={NewProject}/>
+          <Route path="/projects/new" component={NewProject}/>
           <Route path="/projects/:id" component={ViewProject}/>
           <Route path="/projects/:id/edit" component={Project}/>
           <Route path="profile" component={Profile}>
