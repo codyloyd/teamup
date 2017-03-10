@@ -6,7 +6,7 @@ const RolesList = ({roles}) => {
     return <div className="no-roles">No roles have been created...</div>
   }
   return (
-    <div className="">
+    <div>
       {roles.map(role => (
         <RoleDetails
           key={role.id}
