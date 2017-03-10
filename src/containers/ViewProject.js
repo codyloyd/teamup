@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router'
+import {withRouter, Link} from 'react-router'
 import ProjectDetails from '../components/projectDetails'
 import RolesList from '../components/rolesList'
 import Loading from '../components/loading'
@@ -35,6 +35,9 @@ class ViewProject extends React.Component {
           />
           <p className="heading">Open Roles:</p>
           <RolesList roles={this.props.projectRoles || []} />
+          <Link to={'/roles/new'} className="button is-primary">
+            Create Role
+          </Link>
         </div>
       </div>
     )
