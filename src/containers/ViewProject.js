@@ -23,7 +23,7 @@ class ViewProject extends React.Component {
     if (this.props.isFetching) {
       return <Loading />
     }
-    const {id, name, summary, description, tags} = this.props.project
+    const {id, name, summary, description, tags, ownerId} = this.props.project
     return (
       <div className="view-project container">
         <div className="column is-10 is-offset-1">
@@ -34,13 +34,16 @@ class ViewProject extends React.Component {
             description={description}
             tags={tags || []}
           />
-          <div className="section">
+          <div className="">
             <p className="heading">Open Roles:</p>
             <RolesList roles={this.props.projectRoles || []} />
           </div>
-          <div className="section">
-            <NewRole createRole={this.props.createRole} projectId={id} />
-          </div>
+          {this.props.currentUser === ownerId
+            ? <div className="">
+                <p className="heading">Create New Role:</p>
+                <NewRole createRole={this.props.createRole} projectId={id} />
+              </div>
+            : null}
         </div>
       </div>
     )
@@ -52,7 +55,8 @@ const mapStateToProps = (state, ownProps) => {
   return {
     isFetching: getIsFetchingProjects(state),
     project: getSingleProject(state, id),
-    projectRoles: getProjectRoles(state, id)
+    projectRoles: getProjectRoles(state, id),
+    currentUser: state.app.currentUser
   }
 }
 

@@ -12,6 +12,8 @@ const NewRole = ({createRole, projectId}) => {
           name: name.value,
           description: description.value
         })
+        name.value = ''
+        description.value = ''
       }}
     >
       <label className="label">Role Name</label>
