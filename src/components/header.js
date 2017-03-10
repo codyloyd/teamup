@@ -5,22 +5,26 @@ import * as auth from '../api/auth'
 const SignInOutButton = ({loggedIn = false}) => {
   if (loggedIn) {
     return (
-      <a className="nav-item is-tab sign-out"
-        onClick={(e) => {
+      <a
+        className="nav-item is-tab sign-out"
+        onClick={e => {
           e.preventDefault()
           auth.signOut()
         }}
-      >Log out
+      >
+        Log out
       </a>
     )
   }
   return (
-    <a className="nav-item is-tab sign-in"
-      onClick={(e) => {
+    <a
+      className="nav-item is-tab sign-in"
+      onClick={e => {
         e.preventDefault()
         auth.signInWithGithub()
       }}
-    >Log In
+    >
+      Log In
     </a>
   )
 }
@@ -32,11 +36,9 @@ const Profile = ({loggedIn = false}) => {
       </Link>
     )
   }
-  return (
-    null
-  )
+  return null
 }
-const header = (props) => {
+const header = props => {
   return (
     <nav className="nav has-shadow">
       <div className="container">
@@ -44,17 +46,31 @@ const header = (props) => {
           <Link to="/" className="nav-item">
             Teamup
           </Link>
-          <Link to="/projects/" className="nav-item is-tab is-hidden-mobile">Projects</Link>
-          <Link to="/project/new/" className="nav-item is-tab is-hidden-mobile">Create New Project</Link>
+          <Link to="/projects/" className="nav-item is-tab is-hidden-mobile">
+            Projects
+          </Link>
+          <Link
+            to="/projects/new/"
+            className="nav-item is-tab is-hidden-mobile"
+          >
+            Create New Project
+          </Link>
         </div>
         <span className="nav-toggle">
-          <span></span>
-          <span></span>
-          <span></span>
+          <span />
+          <span />
+          <span />
         </span>
         <div className="nav-right nav-menu">
-          <Link to="/projects/" className="nav-item is-tab is-hidden-tablet">Projects</Link>
-          <Link to="/project/new/" className="nav-item is-tab is-hidden-tablet">Create New Project</Link>
+          <Link to="/projects/" className="nav-item is-tab is-hidden-tablet">
+            Projects
+          </Link>
+          <Link
+            to="/projects/new/"
+            className="nav-item is-tab is-hidden-tablet"
+          >
+            Create New Project
+          </Link>
           <Profile {...props} />
           <SignInOutButton {...props} />
         </div>
@@ -64,7 +80,9 @@ const header = (props) => {
 }
 
 const {
-  bool, shape, func
+  bool,
+  shape,
+  func
 } = React.PropTypes
 
 header.propTypes = {
@@ -75,8 +93,6 @@ header.propTypes = {
   })
 }
 
-header.defaultProps = {
-
-}
+header.defaultProps = {}
 
 export default header
