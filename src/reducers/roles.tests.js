@@ -181,6 +181,19 @@ describe('allIds', ({test}) => {
     assert.deepEqual(actual, expected, msg)
     assert.end()
   })
+  test('FETCH_ROLES_SUCCESSFUL', assert => {
+    const msg = 'returns state if no roles found'
+    const stateBefore = ['45', '01']
+    deepFreeze(stateBefore)
+    const action = {
+      type: 'FETCH_ROLES_SUCCESSFUL',
+      response: null
+    }
+    const expected = ['45', '01']
+    const actual = allIds(stateBefore, action)
+    assert.deepEqual(actual, expected, msg)
+    assert.end()
+  })
   test('CREATE_ROLE_SUCCESSFUL', assert => {
     const msg = 'id should be added to array when ROLE created'
     const stateBefore = ['01', '02']

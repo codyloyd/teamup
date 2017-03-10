@@ -2,6 +2,9 @@ import React from 'react'
 import RoleDetails from './roleDetails'
 
 const RolesList = ({roles}) => {
+  if (!roles.length) {
+    return <div className="no-roles">No roles have been created...</div>
+  }
   return (
     <div className="">
       {roles.map(role => (

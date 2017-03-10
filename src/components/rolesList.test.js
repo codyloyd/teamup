@@ -48,4 +48,46 @@ describe('Roles List', ({test}) => {
     equal(actual, expected, msg)
     end()
   })
+
+  test('creates a Role item for each entry in props', ({equal, end}) => {
+    let msg, actual, expected, output
+    msg = 'does not display "no roles" message'
+
+    const props = createProps()
+
+    const $ = dom.load(render(<RolesList {...props} />))
+    output = $('.no-roles')
+    actual = output.length
+    expected = 0
+    equal(actual, expected, msg)
+    end()
+  })
+
+  test('if no roles', ({equal, end}) => {
+    let msg, actual, expected, output
+    msg = 'displays message if no roles'
+
+    const props = {roles: []}
+
+    const $ = dom.load(render(<RolesList {...props} />))
+    output = $('.no-roles')
+    actual = output.length
+    expected = 1
+    equal(actual, expected, msg)
+    end()
+  })
+
+  test('if no roles', ({equal, end}) => {
+    let msg, actual, expected, output
+    msg = 'does not display roles list'
+
+    const props = {roles: []}
+
+    const $ = dom.load(render(<RolesList {...props} />))
+    output = $('.role-details')
+    actual = output.length
+    expected = 0
+    equal(actual, expected, msg)
+    end()
+  })
 })

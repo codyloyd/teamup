@@ -52,6 +52,7 @@ export const allIds = (state = defaultState.allIds, action) => {
   const {type, response} = action
   switch (type) {
     case FETCH_ROLES_SUCCESSFUL:
+      if (!response) return state
       const newIds = Object.keys(response).filter(k => state.indexOf(k) <= 0)
       return [...state, ...newIds]
     case CREATE_ROLE_SUCCESSFUL:
