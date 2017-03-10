@@ -5,15 +5,17 @@ const TagList = ({tags}) => {
     return (
       <div>
         <div className="heading">Tags</div>
-        <div className="level">
+        <div className="level is-mobile">
           <div className="tag-list level-left">
-            {tags.map(tag => <span key={tag} className="tag level-item is-primary">{tag}</span>)}
+            {tags.map(tag => (
+              <span key={tag} className="tag level-item is-primary">{tag}</span>
+            ))}
           </div>
         </div>
       </div>
     )
   }
-  return <div className="tag-list"></div>
+  return <div className="tag-list" />
 }
 
 TagList.propTypes = {
