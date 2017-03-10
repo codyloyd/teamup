@@ -58,7 +58,7 @@ export const createProject = (
     lastUpdated = Date.now()
   }
 ) => dispatch => {
-  api
+  return api
     .createProject({
       id,
       ownerId,
@@ -71,19 +71,22 @@ export const createProject = (
       timeStamp,
       lastUpdated
     })
-    .then(response => dispatch({
-      type: CREATE_PROJECT_SUCCESSFUL,
-      response
-    }))
+    .then(response => {
+      dispatch({
+        type: CREATE_PROJECT_SUCCESSFUL,
+        response
+      })
+      return response
+    })
 }
 
 // ** selectors **
 export const getSingleProject = (state, id) => {
-  const { entities: { projects: { byId } } } = state
+  const {entities: {projects: {byId}}} = state
   return byId && byId[id] ? byId[id] : {}
 }
 export const getProjectRoles = (state, id) => {
-  const { entities: { roles: { byId } } } = state
+  const {entities: {roles: {byId}}} = state
   return byId ? Object.values(byId).filter(r => r.projectId === id) : []
 }
 export const getIsFetchingProjects = state => {

@@ -1,5 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
+import {browserHistory} from 'react-router'
 import {createProject} from '../reducers/projects'
 
 const NewProject = ({createProject, currentUser}) => {
@@ -14,7 +15,7 @@ const NewProject = ({createProject, currentUser}) => {
           summary: summary.value,
           description: description.value,
           tags: tags.value.split(',')
-        })
+        }).then(data => browserHistory.push(`/projects/${data.id}`))
       }}
     >
       <label className="label">Project Name</label>
