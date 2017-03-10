@@ -1,10 +1,11 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter, Link} from 'react-router'
+import {withRouter} from 'react-router'
 import ProjectDetails from '../components/projectDetails'
 import RolesList from '../components/rolesList'
 import Loading from '../components/loading'
-import {fetchRoles} from '../reducers/roles'
+import NewRole from '../components/newRole'
+import {fetchRoles, createRole} from '../reducers/roles'
 import {
   fetchProjects,
   getIsFetchingProjects,
@@ -22,7 +23,7 @@ class ViewProject extends React.Component {
     if (this.props.isFetching) {
       return <Loading />
     }
-    const {name, summary, description, tags} = this.props.project
+    const {id, name, summary, description, tags} = this.props.project
     return (
       <div className="view-project container">
         <div className="column is-10 is-offset-1">
@@ -33,11 +34,13 @@ class ViewProject extends React.Component {
             description={description}
             tags={tags || []}
           />
-          <p className="heading">Open Roles:</p>
-          <RolesList roles={this.props.projectRoles || []} />
-          <Link to={'/roles/new'} className="button is-primary">
-            Create Role
-          </Link>
+          <div className="section">
+            <p className="heading">Open Roles:</p>
+            <RolesList roles={this.props.projectRoles || []} />
+          </div>
+          <div className="section">
+            <NewRole createRole={this.props.createRole} projectId={id} />
+          </div>
         </div>
       </div>
     )
@@ -54,5 +57,5 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 export default withRouter(
-  connect(mapStateToProps, {fetchProjects, fetchRoles})(ViewProject)
+  connect(mapStateToProps, {fetchProjects, fetchRoles, createRole})(ViewProject)
 )

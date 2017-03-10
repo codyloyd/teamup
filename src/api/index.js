@@ -36,6 +36,10 @@ export const fetchRoles = projectId => {
     .then(data => data.val())
 }
 
+export const createRole = role => {
+  return firebase.database().ref(`roles/${role.id}`).set(role).then(() => role)
+}
+
 // ** application functions **
 export const fetchApplications = projectId => {
   return firebase

@@ -2,6 +2,8 @@ import {combineReducers} from 'redux'
 
 import * as api from '../api'
 
+import cuid from 'cuid'
+
 // ** action types **
 const FETCH_ROLES_REQUESTED = 'FETCH_ROLES_REQUESTED'
 const FETCH_ROLES_SUCCESSFUL = 'FETCH_ROLES_SUCCESSFUL'
@@ -26,6 +28,35 @@ export const fetchRoles = projectId => dispatch => {
       })
     }
   )
+}
+
+export const createRole = (
+  {
+    id = cuid(),
+    projectId = null,
+    name = '',
+    status = 'open',
+    description = '',
+    applications = [],
+    users = null
+  }
+) => dispatch => {
+  return api
+    .createRole({
+      id,
+      projectId,
+      name,
+      status,
+      description,
+      applications,
+      users
+    })
+    .then(response => {
+      dispatch({
+        type: CREATE_ROLE_SUCCESSFUL,
+        response
+      })
+    })
 }
 
 // ** reducers **
