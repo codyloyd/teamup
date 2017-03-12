@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {withRouter} from 'react-router'
+import {withRouter, Link} from 'react-router'
 import ProjectDetails from '../components/projectDetails'
 import RolesList from '../components/rolesList'
 import Loading from '../components/loading'
@@ -40,6 +40,9 @@ class ViewProject extends React.Component {
           </div>
           {this.props.currentUser === ownerId
             ? <div className="">
+                <Link className="button is-primary" to={`/projects/${id}/edit`}>
+                  EDIT PROJECT
+                </Link>
                 <p className="heading">Create New Role:</p>
                 <NewRole createRole={this.props.createRole} projectId={id} />
               </div>
