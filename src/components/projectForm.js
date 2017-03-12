@@ -1,13 +1,25 @@
 import React from 'react'
 import {browserHistory} from 'react-router'
 
-const ProjectForm = ({onSubmit, currentUser, project = {}}) => {
+const ProjectForm = (
+  {
+    onSubmit,
+    currentUser,
+    project = {
+      name: '',
+      summary: '',
+      description: '',
+      tags: ''
+    }
+  }
+) => {
   let name, summary, description, tags
   return (
     <form
       onSubmit={e => {
         e.preventDefault()
         onSubmit({
+          id: project.id,
           ownerId: currentUser,
           name: name.value,
           summary: summary.value,
@@ -22,7 +34,7 @@ const ProjectForm = ({onSubmit, currentUser, project = {}}) => {
           type="text"
           ref={input => name = input}
           className="input"
-          value={project.name}
+          defaultValue={project.name}
         />
       </div>
       <label className="label">Short Summary</label>
@@ -31,7 +43,7 @@ const ProjectForm = ({onSubmit, currentUser, project = {}}) => {
           type="text"
           ref={input => summary = input}
           className="input"
-          value={project.summary}
+          defaultValue={project.summary}
         />
       </div>
       <label className="label">Detailed Description</label>
@@ -40,7 +52,7 @@ const ProjectForm = ({onSubmit, currentUser, project = {}}) => {
           type="textarea"
           ref={input => description = input}
           className="textarea"
-          value={project.description}
+          defaultValue={project.description}
         />
       </div>
       <label className="label">Tags</label>
@@ -50,7 +62,7 @@ const ProjectForm = ({onSubmit, currentUser, project = {}}) => {
           placeholder="comma separated list..."
           ref={input => tags = input}
           className="input"
-          value={project.tags}
+          defaultValue={project.tags}
         />
       </div>
       <div className="control">
