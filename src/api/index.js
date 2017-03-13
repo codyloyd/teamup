@@ -22,7 +22,7 @@ export const fetchProject = id => {
     .database()
     .ref(`projects/${id}`)
     .once('value')
-    .then(data => data.val())
+    .then(data => ({[data.val().id]: data.val()}))
 }
 
 // ** role functions **

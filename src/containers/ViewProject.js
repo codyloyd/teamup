@@ -7,7 +7,7 @@ import Loading from '../components/loading'
 import NewRole from '../components/newRole'
 import {fetchRoles, createRole} from '../reducers/roles'
 import {
-  fetchProjects,
+  fetchProject,
   getIsFetchingProjects,
   getSingleProject,
   getProjectRoles
@@ -15,8 +15,8 @@ import {
 
 class ViewProject extends React.Component {
   componentDidMount () {
-    const {fetchProjects, fetchRoles} = this.props
-    fetchProjects()
+    const {fetchProject, fetchRoles} = this.props
+    fetchProject(this.props.params.id)
     fetchRoles(this.props.params.id)
   }
   render () {
@@ -64,5 +64,5 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 export default withRouter(
-  connect(mapStateToProps, {fetchProjects, fetchRoles, createRole})(ViewProject)
+  connect(mapStateToProps, {fetchProject, fetchRoles, createRole})(ViewProject)
 )

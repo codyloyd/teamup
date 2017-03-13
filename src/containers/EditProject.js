@@ -4,7 +4,7 @@ import Loading from '../components/loading'
 import {
   createProject,
   getSingleProject,
-  fetchProjects,
+  fetchProject,
   getIsFetchingProjects
 } from '../reducers/projects'
 
@@ -12,15 +12,14 @@ import ProjectForm from '../components/projectForm'
 
 class EditProject extends React.Component {
   componentDidMount () {
-    const {fetchProjects} = this.props
-    fetchProjects()
+    const {fetchProject} = this.props
+    fetchProject(this.props.params.id)
   }
   render () {
     if (this.props.isFetching) {
       return <Loading />
     }
     const {createProject, currentUser, project} = this.props
-    console.log(project)
     return (
       <ProjectForm
         onSubmit={createProject}
@@ -40,6 +39,6 @@ const mapStateToProps = (state, ownProps) => {
   }
 }
 
-export default connect(mapStateToProps, {createProject, fetchProjects})(
+export default connect(mapStateToProps, {createProject, fetchProject})(
   EditProject
 )

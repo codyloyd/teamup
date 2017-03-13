@@ -18,7 +18,4 @@ import appReducer from './reducers'
 const store = configureStore(appReducer)
 configureFirebase(store.dispatch)
 
-ReactDOM.render(
-  <Root store={store}/>,
-  document.getElementById('root')
-)
+ReactDOM.render(<Root store={store} />, document.getElementById('root'))

@@ -8,7 +8,9 @@ export const FETCH_PROJECTS_REQUESTED = 'FETCH_PROJECTS_REQUESTED'
 export const FETCH_PROJECTS_SUCCESSFUL = 'FETCH_PROJECTS_SUCCESSFUL'
 export const FETCH_PROJECTS_FAILED = 'FETCH_PROJECTS_FAILED'
 
+export const FETCH_PROJECT_REQUESTED = 'FETCH_PROJECT_REQUESTED'
 export const FETCH_PROJECT_SUCCESSFUL = 'FETCH_PROJECT_SUCCESSFUL'
+export const FETCH_PROJECT_FAILED = 'FETCH_PROJECT_FAILED'
 
 export const CREATE_PROJECT_SUCCESSFUL = 'CREATE_PROJECT_SUCCESSFUL'
 // ** action creators **
@@ -17,13 +19,18 @@ export const CREATE_PROJECT_SUCCESSFUL = 'CREATE_PROJECT_SUCCESSFUL'
 // these use thunks
 
 export const fetchProject = id => dispatch => {
-  console.log(id)
-  api.fetchProject(id).then(response => {
-    dispatch({
-      type: FETCH_PROJECT_SUCCESSFUL,
-      response
-    })
-  })
+  dispatch({type: FETCH_PROJECT_REQUESTED})
+  api.fetchProject(id).then(
+    response => {
+      dispatch({
+        type: FETCH_PROJECT_SUCCESSFUL,
+        response
+      })
+    },
+    error => {
+      dispatch({type: FETCH_PROJECT_FAILED, error})
+    }
+  )
 }
 
 export const fetchProjects = id => dispatch => {
@@ -105,6 +112,7 @@ export const byId = (state = defaultState.byId, action) => {
   const {type, response} = action
   switch (type) {
     case FETCH_PROJECTS_SUCCESSFUL:
+    case FETCH_PROJECT_SUCCESSFUL:
       return {...state, ...response}
     case CREATE_PROJECT_SUCCESSFUL:
       return {...state, [response.id]: response}
@@ -117,6 +125,7 @@ export const allIds = (state = defaultState.allIds, action) => {
   const {type, response} = action
   switch (type) {
     case FETCH_PROJECTS_SUCCESSFUL:
+    case FETCH_PROJECT_SUCCESSFUL:
       const newIds = Object.keys(response).filter(k => state.indexOf(k) <= 0)
       return [...state, ...newIds]
     case CREATE_PROJECT_SUCCESSFUL:
@@ -130,9 +139,12 @@ export const isFetching = (state = defaultState.isFetching, action) => {
   const {type} = action
   switch (type) {
     case FETCH_PROJECTS_REQUESTED:
+    case FETCH_PROJECT_REQUESTED:
       return true
     case FETCH_PROJECTS_SUCCESSFUL:
+    case FETCH_PROJECT_SUCCESSFUL:
     case FETCH_PROJECTS_FAILED:
+    case FETCH_PROJECT_FAILED:
       return false
     default:
       return state
@@ -143,8 +155,11 @@ export const errorMessage = (state = defaultState.errorMessage, action) => {
   const {type} = action
   switch (type) {
     case FETCH_PROJECTS_FAILED:
+    case FETCH_PROJECT_FAILED:
       return action.message
     case FETCH_PROJECTS_REQUESTED:
+    case FETCH_PROJECT_REQUESTED:
+    case FETCH_PROJECTS_SUCCESSFUL:
     case FETCH_PROJECT_SUCCESSFUL:
       return null
     default:
