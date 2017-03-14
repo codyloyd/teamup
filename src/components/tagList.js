@@ -5,10 +5,12 @@ const TagList = ({tags}) => {
     return (
       <div>
         <div className="heading">Tags</div>
-        <div className="level is-mobile">
-          <div className="tag-list level-left">
+        <div className="tag-list">
+          <div className="control is-grouped">
             {tags.map(tag => (
-              <span key={tag} className="tag level-item is-primary">{tag}</span>
+              <span key={tag} className="tag control level-item is-primary">
+                {tag}
+              </span>
             ))}
           </div>
         </div>

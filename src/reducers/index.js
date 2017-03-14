@@ -7,7 +7,7 @@ import users from './users'
 import currentUser from './currentUser'
 import ui from './ui'
 
-const entities = combineReducers({projects, roles, applications, users})
 const app = combineReducers({currentUser, ui})
+const entities = combineReducers({projects, roles, applications, users})
 
 export default combineReducers({app, entities})

@@ -1,5 +1,5 @@
 import describe from 'tape'
-import {applicationForm} from './ui'
+import {applicationForm} from './ui-applicationForm'
 
 describe('applicationForm', ({test}) => {
   test('application form default value', assert => {

@@ -14,7 +14,11 @@ import {
   getProjectRoles
 } from '../reducers/projects'
 import {createApplication} from '../reducers/applications'
-import {getApplicationForm, toggleApplicationForm} from '../reducers/ui'
+import {
+  getApplicationForm,
+  toggleApplicationForm
+} from '../reducers/ui-applicationForm'
+import {getRoleForm, toggleRoleForm} from '../reducers/ui-roleForm'
 
 class ViewProject extends React.Component {
   componentDidMount () {
@@ -37,20 +41,24 @@ class ViewProject extends React.Component {
             description={description}
             tags={tags || []}
           />
-          <div className="">
-            <p className="heading">Open Roles:</p>
-            <RolesList
-              toggleApplicationForm={this.props.toggleApplicationForm}
-              roles={this.props.projectRoles || []}
-            />
-          </div>
-          <ConditionalRoleForm
+          <ProjectManagementTools
             currentUser={this.props.currentUser}
             ownerId={ownerId}
-            createRole={this.props.createRole}
             id={id}
+            toggleRoleForm={this.props.toggleRoleForm}
+          />
+          <p className="heading">Open Roles:</p>
+          <RolesList
+            toggleApplicationForm={this.props.toggleApplicationForm}
+            roles={this.props.projectRoles || []}
           />
         </div>
+        <ConditionalRoleForm
+          visibility={this.props.roleForm.visibility}
+          toggleRoleForm={this.props.toggleRoleForm}
+          createRole={this.props.createRole}
+          id={id}
+        />
         <ConditionalApplicationForm
           visibility={this.props.applicationForm.visibility}
           role={this.props.rolesById[this.props.applicationForm.role]}
@@ -61,6 +69,25 @@ class ViewProject extends React.Component {
       </div>
     )
   }
+}
+
+export const ProjectManagementTools = (
+  {currentUser, ownerId, id, toggleRoleForm}
+) => {
+  return currentUser === ownerId
+    ? <div className="control is-grouped">
+        <div className="control">
+          <Link className="button is-primary" to={`/projects/${id}/edit`}>
+            Edit Project
+          </Link>
+        </div>
+        <div className="control">
+          <button className="button is-primary" onClick={toggleRoleForm}>
+            Add Role
+          </button>
+        </div>
+      </div>
+    : null
 }
 
 export const ConditionalApplicationForm = (
@@ -78,7 +105,6 @@ export const ConditionalApplicationForm = (
             role={role}
             currentUser={currentUser}
             createApplication={createApplication}
-            toggleApplicationForm={toggleApplicationForm}
           />
         </div>
       </div>
@@ -90,20 +116,27 @@ export const ConditionalApplicationForm = (
   )
 }
 
-export const ConditionalRoleForm = ({currentUser, ownerId, createRole, id}) => {
-  return currentUser === ownerId
-    ? <div className="role-form">
-        <Link className="button is-primary" to={`/projects/${id}/edit`} />
-        <p className="heading">Create New Role:</p>
-        <NewRole createRole={createRole} projectId={id} />
+export const ConditionalRoleForm = (
+  {createRole, id, visibility, toggleRoleForm}
+) => {
+  return (
+    <div className={`modal ${visibility ? 'is-active' : ''}`}>
+      <div className="modal-background" onClick={() => toggleRoleForm('')} />
+      <div className="modal-content">
+        <div className="box">
+          <NewRole createRole={createRole} projectId={id} />
+        </div>
       </div>
-    : null
+      <button className="modal-close" onClick={() => toggleRoleForm('')} />
+    </div>
+  )
 }
 
 const mapStateToProps = (state, ownProps) => {
   const {params: {id}} = ownProps
   return {
     applicationForm: getApplicationForm(state),
+    roleForm: getRoleForm(state),
     rolesById: state.entities.roles.byId,
     isFetching: getIsFetchingProjects(state),
     project: getSingleProject(state, id),
@@ -118,6 +151,7 @@ export default withRouter(
     fetchRoles,
     createRole,
     toggleApplicationForm,
-    createApplication
+    createApplication,
+    toggleRoleForm
   })(ViewProject)
 )

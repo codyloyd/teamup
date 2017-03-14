@@ -1,8 +1,6 @@
 import React from 'react'
 
-const ApplicationForm = (
-  {createApplication, currentUser, role, toggleApplicationForm}
-) => {
+const ApplicationForm = ({createApplication, currentUser, role}) => {
   let message
   return (
     <form
@@ -15,7 +13,6 @@ const ApplicationForm = (
           message: message.value
         })
         message.value = ''
-        toggleApplicationForm('')
       }}
     >
       <h1 className="heading">Application for {role ? role.name : null}</h1>

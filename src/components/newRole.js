@@ -1,6 +1,6 @@
 import React from 'react'
 
-const NewRole = ({createRole, projectId}) => {
+const NewRole = ({createRole, projectId, toggleRoleForm}) => {
   let name, description
   return (
     <form
