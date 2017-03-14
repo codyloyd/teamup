@@ -41,6 +41,7 @@ db = {
 
   applications: {
     '1': {
+      id,
       userId: '1',
       roleId: '1',
       projectId: '1',

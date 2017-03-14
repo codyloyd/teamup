@@ -1,7 +1,6 @@
 import React from 'react'
 
 const NewRole = ({createRole, projectId}) => {
-  console.log(createRole)
   let name, description
   return (
     <form
