@@ -10,6 +10,7 @@ const RolesList = ({roles, toggleApplicationForm}) => {
       {roles.map(role => (
         <RoleDetails
           key={role.id}
+          id={role.id}
           name={role.name}
           description={role.description}
           toggleApplicationForm={toggleApplicationForm}

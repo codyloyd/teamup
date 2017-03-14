@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ApplicationForm = (
-  {createApplication, projectId, currentUser, roleId, roleName}
+  {createApplication, currentUser, role, toggleApplicationForm}
 ) => {
   let message
   return (
@@ -9,15 +9,16 @@ const ApplicationForm = (
       onSubmit={e => {
         e.preventDefault()
         createApplication({
-          projectId,
-          roleId,
+          projectId: role.projectId,
+          roleId: role.id,
           userId: currentUser,
           message: message.value
         })
         message.value = ''
+        toggleApplicationForm('')
       }}
     >
-      <h1 className="heading">Application for {roleName}</h1>
+      <h1 className="heading">Application for {role ? role.name : null}</h1>
       <p>
         When you apply for this role, your profile information including your github profile will be sent to the project owner who will contact you if you are a good fit for the project.
       </p>
