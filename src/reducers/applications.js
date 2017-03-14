@@ -1,4 +1,5 @@
 import {combineReducers} from 'redux'
+import cuid from 'cuid'
 
 import * as api from '../api'
 
@@ -36,6 +37,32 @@ export const fetchApplications = projectId => dispatch => {
   )
 }
 
+export const createApplication = (
+  {
+    id = cuid(),
+    userId = null,
+    roleId = null,
+    projectId = null,
+    message = '',
+    timeStamp = Date.now()
+  }
+) => dispatch => {
+  return api
+    .createApplication({
+      id,
+      userId,
+      roleId,
+      projectId,
+      message,
+      timeStamp
+    })
+    .then(response => {
+      dispatch({
+        type: CREATE_APPLICATION_SUCCESSFUL,
+        response
+      })
+    })
+}
 // ** reducers **
 const defaultState = {
   byId: {},

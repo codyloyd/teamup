@@ -51,6 +51,14 @@ export const fetchApplications = projectId => {
     .then(data => data.val())
 }
 
+export const createApplication = application => {
+  return firebase
+    .database()
+    .ref(`applications/${application.id}`)
+    .set(application)
+    .then(() => application)
+}
+
 // ** users functions **
 export const fetchUsers = () => {
   return firebase
