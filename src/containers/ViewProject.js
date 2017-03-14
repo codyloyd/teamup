@@ -38,19 +38,28 @@ class ViewProject extends React.Component {
             <p className="heading">Open Roles:</p>
             <RolesList roles={this.props.projectRoles || []} />
           </div>
-          {this.props.currentUser === ownerId
-            ? <div className="">
-                <Link className="button is-primary" to={`/projects/${id}/edit`}>
-                  EDIT PROJECT
-                </Link>
-                <p className="heading">Create New Role:</p>
-                <NewRole createRole={this.props.createRole} projectId={id} />
-              </div>
-            : null}
+          <ConditionalRoleForm
+            currentUser={this.props.currentUser}
+            ownerId={ownerId}
+            createRole={this.props.createRole}
+            id={id}
+          />
         </div>
       </div>
     )
   }
+}
+
+export const ConditionalRoleForm = ({currentUser, ownerId, createRole, id}) => {
+  return currentUser === ownerId
+    ? <div className="role-form">
+        <Link className="button is-primary" to={`/projects/${id}/edit`}>
+          EDIT PROJECT
+        </Link>
+        <p className="heading">Create New Role:</p>
+        <NewRole createRole={createRole} projectId={id} />
+      </div>
+    : null
 }
 
 const mapStateToProps = (state, ownProps) => {

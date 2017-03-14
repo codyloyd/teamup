@@ -9,6 +9,9 @@ import '../components/rolesList.test'
 import '../components/tagList.test'
 import '../components/roleDetails.test'
 
+// Containers
+import '../containers/ViewProject.test'
+
 // Reducers
 import '../reducers/applications.tests'
 import '../reducers/currentUser.tests'
