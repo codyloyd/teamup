@@ -17,7 +17,7 @@ const ApplicationForm = (
         message.value = ''
       }}
     >
-      <h1>Application for {roleName}</h1>
+      <h1 className="heading">Application for {roleName}</h1>
       <p>
         When you apply for this role, your profile information including your github profile will be sent to the project owner who will contact you if you are a good fit for the project.
       </p>

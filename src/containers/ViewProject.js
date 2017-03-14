@@ -5,6 +5,7 @@ import ProjectDetails from '../components/projectDetails'
 import RolesList from '../components/rolesList'
 import Loading from '../components/loading'
 import NewRole from '../components/newRole'
+import ApplicationForm from '../components/applicationForm'
 import {fetchRoles, createRole} from '../reducers/roles'
 import {
   fetchProject,
@@ -12,6 +13,7 @@ import {
   getSingleProject,
   getProjectRoles
 } from '../reducers/projects'
+import {getApplicationForm, toggleApplicationForm} from '../reducers/ui'
 
 class ViewProject extends React.Component {
   componentDidMount () {
@@ -36,7 +38,10 @@ class ViewProject extends React.Component {
           />
           <div className="">
             <p className="heading">Open Roles:</p>
-            <RolesList roles={this.props.projectRoles || []} />
+            <RolesList
+              toggleApplicationForm={this.props.toggleApplicationForm}
+              roles={this.props.projectRoles || []}
+            />
           </div>
           <ConditionalRoleForm
             currentUser={this.props.currentUser}
@@ -45,17 +50,35 @@ class ViewProject extends React.Component {
             id={id}
           />
         </div>
+        <ConditionalApplicationForm
+          visibility={this.props.applicationForm}
+          toggleApplicationForm={this.props.toggleApplicationForm}
+        />
       </div>
     )
   }
 }
 
+export const ConditionalApplicationForm = (
+  {visibility, toggleApplicationForm}
+) => {
+  return (
+    <div className={`modal ${visibility ? 'is-active' : ''}`}>
+      <div className="modal-background" onClick={toggleApplicationForm} />
+      <div className="modal-content">
+        <div className="box">
+          <ApplicationForm roleName={'javascript dev'} />
+        </div>
+      </div>
+      <button className="modal-close" onClick={toggleApplicationForm} />
+    </div>
+  )
+}
+
 export const ConditionalRoleForm = ({currentUser, ownerId, createRole, id}) => {
   return currentUser === ownerId
     ? <div className="role-form">
-        <Link className="button is-primary" to={`/projects/${id}/edit`}>
-          EDIT PROJECT
-        </Link>
+        <Link className="button is-primary" to={`/projects/${id}/edit`} />
         <p className="heading">Create New Role:</p>
         <NewRole createRole={createRole} projectId={id} />
       </div>
@@ -65,6 +88,7 @@ export const ConditionalRoleForm = ({currentUser, ownerId, createRole, id}) => {
 const mapStateToProps = (state, ownProps) => {
   const {params: {id}} = ownProps
   return {
+    applicationForm: getApplicationForm(state),
     isFetching: getIsFetchingProjects(state),
     project: getSingleProject(state, id),
     projectRoles: getProjectRoles(state, id),
@@ -73,5 +97,10 @@ const mapStateToProps = (state, ownProps) => {
 }
 
 export default withRouter(
-  connect(mapStateToProps, {fetchProject, fetchRoles, createRole})(ViewProject)
+  connect(mapStateToProps, {
+    fetchProject,
+    fetchRoles,
+    createRole,
+    toggleApplicationForm
+  })(ViewProject)
 )

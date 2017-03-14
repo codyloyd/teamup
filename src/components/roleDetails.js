@@ -1,10 +1,12 @@
 import React from 'react'
 
-const RoleDetails = ({name, description}) => (
+const RoleDetails = ({name, description, toggleApplicationForm}) => (
   <div className="role-details box">
     <p className="title is-4 role-name">{name}</p>
     <p className="role-description">{description}</p>
-    <button className="button is-primary">Apply</button>
+    <button className="button is-primary" onClick={toggleApplicationForm}>
+      Apply
+    </button>
   </div>
 )
 
