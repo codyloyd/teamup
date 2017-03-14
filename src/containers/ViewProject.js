@@ -1,32 +1,32 @@
-import React from 'react';
-import {connect} from 'react-redux';
-import {withRouter, Link} from 'react-router';
-import ProjectDetails from '../components/projectDetails';
-import RolesList from '../components/rolesList';
-import Loading from '../components/loading';
-import NewRole from '../components/newRole';
-import ApplicationForm from '../components/applicationForm';
-import {fetchRoles, createRole} from '../reducers/roles';
+import React from 'react'
+import {connect} from 'react-redux'
+import {withRouter, Link} from 'react-router'
+import ProjectDetails from '../components/projectDetails'
+import RolesList from '../components/rolesList'
+import Loading from '../components/loading'
+import NewRole from '../components/newRole'
+import ApplicationForm from '../components/applicationForm'
+import {fetchRoles, createRole} from '../reducers/roles'
 import {
   fetchProject,
   getIsFetchingProjects,
   getSingleProject,
   getProjectRoles
-} from '../reducers/projects';
-import {createApplication} from '../reducers/applications';
-import {getApplicationForm, toggleApplicationForm} from '../reducers/ui';
+} from '../reducers/projects'
+import {createApplication} from '../reducers/applications'
+import {getApplicationForm, toggleApplicationForm} from '../reducers/ui'
 
 class ViewProject extends React.Component {
-  componentDidMount() {
-    const {fetchProject, fetchRoles} = this.props;
-    fetchProject(this.props.params.id);
-    fetchRoles(this.props.params.id);
+  componentDidMount () {
+    const {fetchProject, fetchRoles} = this.props
+    fetchProject(this.props.params.id)
+    fetchRoles(this.props.params.id)
   }
-  render() {
+  render () {
     if (this.props.isFetching) {
-      return <Loading />;
+      return <Loading />
     }
-    const {id, name, summary, description, tags, ownerId} = this.props.project;
+    const {id, name, summary, description, tags, ownerId} = this.props.project
     return (
       <div className="view-project container">
         <div className="column is-10 is-offset-1">
@@ -59,7 +59,7 @@ class ViewProject extends React.Component {
           currentUser={this.props.currentUser}
         />
       </div>
-    );
+    )
   }
 }
 
@@ -87,8 +87,8 @@ export const ConditionalApplicationForm = (
         onClick={() => toggleApplicationForm('')}
       />
     </div>
-  );
-};
+  )
+}
 
 export const ConditionalRoleForm = ({currentUser, ownerId, createRole, id}) => {
   return currentUser === ownerId
@@ -97,11 +97,11 @@ export const ConditionalRoleForm = ({currentUser, ownerId, createRole, id}) => {
         <p className="heading">Create New Role:</p>
         <NewRole createRole={createRole} projectId={id} />
       </div>
-    : null;
-};
+    : null
+}
 
 const mapStateToProps = (state, ownProps) => {
-  const {params: {id}} = ownProps;
+  const {params: {id}} = ownProps
   return {
     applicationForm: getApplicationForm(state),
     rolesById: state.entities.roles.byId,
@@ -109,8 +109,8 @@ const mapStateToProps = (state, ownProps) => {
     project: getSingleProject(state, id),
     projectRoles: getProjectRoles(state, id),
     currentUser: state.app.currentUser
-  };
-};
+  }
+}
 
 export default withRouter(
   connect(mapStateToProps, {
@@ -120,4 +120,4 @@ export default withRouter(
     toggleApplicationForm,
     createApplication
   })(ViewProject)
-);
+)
