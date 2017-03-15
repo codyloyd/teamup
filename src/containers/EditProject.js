@@ -25,6 +25,7 @@ class EditProject extends React.Component {
         onSubmit={createProject}
         currentUser={currentUser}
         project={project}
+        buttonLabel="Update Project Details"
       />
     )
   }

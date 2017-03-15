@@ -7,18 +7,18 @@ import Loading from '../components/loading'
 import NewRole from '../components/newRole'
 import ApplicationForm from '../components/applicationForm'
 import {fetchRoles, createRole} from '../reducers/roles'
+import {createApplication} from '../reducers/applications'
+import {getRoleForm, toggleRoleForm} from '../reducers/ui-roleForm'
 import {
   fetchProject,
   getIsFetchingProjects,
   getSingleProject,
   getProjectRoles
 } from '../reducers/projects'
-import {createApplication} from '../reducers/applications'
 import {
   getApplicationForm,
   toggleApplicationForm
 } from '../reducers/ui-applicationForm'
-import {getRoleForm, toggleRoleForm} from '../reducers/ui-roleForm'
 
 class ViewProject extends React.Component {
   componentDidMount () {

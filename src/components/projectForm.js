@@ -10,7 +10,8 @@ const ProjectForm = (
       summary: '',
       description: '',
       tags: ''
-    }
+    },
+    buttonLabel = 'Create Project'
   }
 ) => {
   let name, summary, description, tags
@@ -66,7 +67,7 @@ const ProjectForm = (
         />
       </div>
       <div className="control">
-        <input type="submit" value="Create Project" className="button" />
+        <input type="submit" value={buttonLabel} className="button" />
       </div>
     </form>
   )
