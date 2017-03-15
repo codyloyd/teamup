@@ -7,7 +7,7 @@ import Projects from '../containers/Projects'
 import ViewProject from '../containers/ViewProject'
 import NewProject from '../containers/NewProject'
 import EditProject from '../containers/EditProject'
-const Profile = props => <h1 className="title">Your Profile</h1>
+import Profile from '../containers/Profile'
 const NoMatch = props => <h1 className="title">404 Error Message</h1>
 const LandingPage = props => <h1 className="title">Welcome</h1>
 
@@ -23,10 +23,8 @@ export default ({store}) => {
           <Route path="/projects/new" component={NewProject} />
           <Route path="/projects/:id" component={ViewProject} />
           <Route path="/projects/:id/edit" component={EditProject} />
-          <Route path="profile" component={Profile}>
-            <Route path="/profile/view/:id" component={Profile} />
-            <Route path="/profile/edit/:id" component={Profile} />
-          </Route>
+          <Route path="/users/:id" component={Profile} />
+          <Route path="/users/:id/edit" component={Profile} />
           <Route path="*" component={NoMatch} />
         </Route>
       </Router>

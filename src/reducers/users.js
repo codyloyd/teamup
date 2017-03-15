@@ -34,6 +34,18 @@ export const fetchUsers = () => dispatch => {
   )
 }
 
+export const fetchUser = id => dispatch => {
+  dispatch(fetchUsersRequested())
+  api.fetchUser(id).then(
+    response => {
+      dispatch(fetchUsersSuccessful(response))
+    },
+    error => {
+      dispatch(fetchUsersFailed(error))
+    }
+  )
+}
+
 // ** reducers **
 const defaultState = {
   byId: {},

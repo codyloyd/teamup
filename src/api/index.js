@@ -67,3 +67,11 @@ export const fetchUsers = () => {
     .once('value')
     .then(data => data.val())
 }
+
+export const fetchUser = id => {
+  return firebase
+    .database()
+    .ref(`users/${id}`)
+    .once('value')
+    .then(data => ({[data.val().id]: data.val()}))
+}
