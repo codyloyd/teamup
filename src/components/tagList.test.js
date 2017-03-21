@@ -20,7 +20,7 @@ describe('tagList', ({test}) => {
     const props = createProps()
     const $ = dom.load(render(<TagList {...props} />))
 
-    output = $('.tag-list > .tag')
+    output = $('.tag')
     actual = output.length
     expected = 3
     equal(actual, expected, msg)

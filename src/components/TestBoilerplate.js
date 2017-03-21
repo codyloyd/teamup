@@ -5,16 +5,14 @@ import ReactDOMServer from 'react-dom/server'
 
 const render = ReactDOMServer.renderToStaticMarkup
 
-const createProps = ({
-
-} = {}) => ({
-
-})
+const createProps = ({} = {}) => ({})
 
 describe('component', ({test}) => {
   test('item', ({equal, end}) => {
     let msg, actual, expected, output
-
+    const props = createProps()
+    const $ = dom.load(render(<RENDERWHAT {...props} />))
+    expected = output
     equal(actual, expected, msg)
     end()
   })

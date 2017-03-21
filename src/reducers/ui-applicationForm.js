@@ -21,7 +21,7 @@ export const visibility = (state = false, action = {}) => {
   }
 }
 
-export const role = (state = 'tacos', action = {}) => {
+export const role = (state = null, action = {}) => {
   switch (action.type) {
     case TOGGLE_APPLICATION_FORM:
       return action.role

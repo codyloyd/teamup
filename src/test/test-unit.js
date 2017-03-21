@@ -11,6 +11,7 @@ import '../components/roleDetails.test'
 
 // Containers
 import '../containers/ViewProject.test'
+import '../containers/Profile.test'
 
 // Reducers
 import '../reducers/applications.tests'
