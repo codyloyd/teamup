@@ -41,12 +41,12 @@ const mapStateToProps = state => {
 
 const {
   bool,
-  object
+  string
 } = React.PropTypes
 
 App.propTypes = {
   loggedIn: bool.isRequired,
-  currentUser: object.isRequired
+  currentUser: string.isRequired
 }
 
 App.defaultProps = {}

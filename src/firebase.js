@@ -14,8 +14,9 @@ export default dispatch => {
   firebase.initializeApp(config)
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
-      api.updateUser({...user})
-      dispatch(currentUser.signInSuccessful(user))
+      api.updateUser({...user}).then(user => {
+        dispatch(currentUser.signInSuccessful(user))
+      })
     } else {
       dispatch(currentUser.signOutSuccessful(user))
     }

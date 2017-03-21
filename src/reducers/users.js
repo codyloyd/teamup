@@ -22,29 +22,31 @@ export const fetchUsersFailed = message => ({
 })
 
 // ** async actions **
-export const fetchUsers = () => dispatch => {
-  dispatch(fetchUsersRequested())
-  api.fetchUsers().then(
-    response => {
-      dispatch(fetchUsersSuccessful(response))
-    },
-    error => {
-      dispatch(fetchUsersFailed(error))
-    }
-  )
-}
+export const fetchUsers = () =>
+  dispatch => {
+    dispatch(fetchUsersRequested())
+    api.fetchUsers().then(
+      response => {
+        dispatch(fetchUsersSuccessful(response))
+      },
+      error => {
+        dispatch(fetchUsersFailed(error))
+      }
+    )
+  }
 
-export const fetchUser = id => dispatch => {
-  dispatch(fetchUsersRequested())
-  api.fetchUser(id).then(
-    response => {
-      dispatch(fetchUsersSuccessful(response))
-    },
-    error => {
-      dispatch(fetchUsersFailed(error))
-    }
-  )
-}
+export const fetchUser = id =>
+  dispatch => {
+    dispatch(fetchUsersRequested())
+    api.fetchUser(id).then(
+      response => {
+        dispatch(fetchUsersSuccessful(response))
+      },
+      error => {
+        dispatch(fetchUsersFailed(error))
+      }
+    )
+  }
 // ** selectors **
 export const getSingleUser = (state, id) => {
   const {entities: {users: {byId}}} = state
@@ -80,8 +82,6 @@ export const allIds = (state = defaultState.allIds, action = 'NONE') => {
     case FETCH_USERS_SUCCESSFUL:
       const ids = Object.keys(response).filter(uid => state.indexOf(uid) < 0)
       return [...state, ...ids]
-    case SIGN_IN_SUCCESSFUL:
-      return [...state, ...action.user.uid]
     default:
       return state
   }

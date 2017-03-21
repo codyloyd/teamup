@@ -8,7 +8,7 @@ class Profile extends React.Component {
   }
   render () {
     if (this.props.user) {
-      return <h1 className="title">{this.props.user.displayName}</h1>
+      return <h1 className="title">{this.props.user.about}</h1>
     }
     return null
   }

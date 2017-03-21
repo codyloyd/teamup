@@ -73,16 +73,22 @@ export const fetchUser = id => {
     .database()
     .ref(`users/${id}`)
     .once('value')
-    .then(data => ({[data.val().id]: data.val()}))
+    .then(data => ({[data.val().uid]: data.val()}))
 }
 
 export const updateUser = (
   {uid = null, email = '', displayName = '', photoURL = '', providerData = []}
 ) => {
-  return firebase.database().ref(`users/${uid}`).update({
-    email,
-    displayName,
-    photoURL,
-    githubUid: providerData[0].uid
-  })
+  return firebase
+    .database()
+    .ref(`users/${uid}`)
+    .update({
+      uid,
+      email,
+      displayName,
+      photoURL,
+      githubUid: providerData[0].uid
+    })
+    .then(() => fetchUser(uid))
+    .then(userObj => userObj[uid])
 }
