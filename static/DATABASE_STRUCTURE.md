@@ -56,6 +56,7 @@ db = {
       displayName: 'Name',
       githubUsername: 'gh-name',
       signedUp: 12345,
+      photoURL: 'url',
       emailAddress: 'email@address.com',
       aboutMe: 'long bit of text goes here',
       profileLinks: [

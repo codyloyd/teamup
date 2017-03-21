@@ -45,6 +45,11 @@ export const fetchUser = id => dispatch => {
     }
   )
 }
+// ** selectors **
+export const getSingleUser = (state, id) => {
+  const {entities: {users: {byId}}} = state
+  return byId && byId[id] ? byId[id] : {}
+}
 
 // ** reducers **
 const defaultState = {

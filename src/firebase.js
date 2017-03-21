@@ -1,5 +1,6 @@
 import firebase from 'firebase'
 import * as currentUser from './reducers/currentUser'
+import * as api from './api'
 
 var config = {
   apiKey: 'AIzaSyDAOl7zJ3dEZ93__kjI7CiVPAch4yLU_ZY',
@@ -9,11 +10,11 @@ var config = {
   messagingSenderId: '426969224935'
 }
 
-
-export default (dispatch) => {
+export default dispatch => {
   firebase.initializeApp(config)
   firebase.auth().onAuthStateChanged(user => {
     if (user) {
+      api.updateUser({...user})
       dispatch(currentUser.signInSuccessful(user))
     } else {
       dispatch(currentUser.signOutSuccessful(user))

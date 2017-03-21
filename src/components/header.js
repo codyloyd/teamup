@@ -28,10 +28,10 @@ const SignInOutButton = ({loggedIn = false}) => {
     </a>
   )
 }
-const Profile = ({loggedIn = false}) => {
+const Profile = ({loggedIn = false, currentUser = ''}) => {
   if (loggedIn) {
     return (
-      <Link to="/profile/" className="nav-item is-tab profile">
+      <Link to={`/users/${currentUser}`} className="nav-item is-tab profile">
         Profile
       </Link>
     )
@@ -39,6 +39,7 @@ const Profile = ({loggedIn = false}) => {
   return null
 }
 const header = props => {
+  console.log('HEADER BABY', props)
   return (
     <nav className="nav has-shadow">
       <div className="container">
