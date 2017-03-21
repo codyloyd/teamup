@@ -56,6 +56,12 @@ db = {
       displayName: 'Name',
       githubUsername: 'gh-name',
       signedUp: 12345,
+      emailAddress: 'email@address.com',
+      aboutMe: 'long bit of text goes here',
+      profileLinks: [
+        {name: 'github', url: 'urlhere'},
+        {name: 'linkedIn', url: 'urlhere'}
+      ],
       projectsOwned: [
         'projectId1',
         'projectId2'
