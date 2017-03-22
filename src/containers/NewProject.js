@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {createProject} from '../reducers/projects'
+import {createProject} from '../project/projects-reducer'
 
 import ProjectForm from '../components/projectForm'
 

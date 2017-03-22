@@ -6,7 +6,7 @@ import {
   getSingleProject,
   fetchProject,
   getIsFetchingProjects
-} from '../reducers/projects'
+} from '../project/projects-reducer'
 
 import ProjectForm from '../components/projectForm'
 

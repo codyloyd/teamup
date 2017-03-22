@@ -17,7 +17,7 @@ import '../user/test/Profile'
 // Reducers
 import '../reducers/applications.tests'
 import '../user/test/currentUser-reducer'
-import '../reducers/projects.tests'
+import '../project/test/projects-reducer'
 import '../project/test/roles-reducer'
 import '../user/test/users-reducer'
 import '../reducers/ui-applicationForm.tests'

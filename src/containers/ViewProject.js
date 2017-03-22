@@ -14,7 +14,7 @@ import {
   getIsFetchingProjects,
   getSingleProject,
   getProjectRoles
-} from '../reducers/projects'
+} from '../project/projects-reducer'
 import {
   getApplicationForm,
   toggleApplicationForm

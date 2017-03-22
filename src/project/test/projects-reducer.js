@@ -1,7 +1,7 @@
 import describe from 'tape'
 import deepFreeze from 'deep-freeze'
 
-import {byId, isFetching, errorMessage, allIds} from './projects'
+import {byId, isFetching, errorMessage, allIds} from '../projects-reducer'
 
 describe('byId', ({test}) => {
   test('FETCH_PROJECTS_SUCCESSFUL', assert => {

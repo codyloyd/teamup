@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
 
-import projects from './projects'
+import projects from '../project/projects-reducer'
 import roles from '../project/roles-reducer'
 import applications from './applications'
 import users from '../user/users-reducer'
