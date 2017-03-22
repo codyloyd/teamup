@@ -12,12 +12,12 @@ import '../components/tagList/test'
 
 // Containers
 import '../containers/ViewProject.test'
-// import '../containers/Profile.test'
+import '../user/test/Profile.test'
 
 // Reducers
 import '../reducers/applications.tests'
 import '../reducers/currentUser.tests'
 import '../reducers/projects.tests'
 import '../reducers/roles.tests'
-import '../reducers/users.tests'
+import '../user/test/users-reducer.tests'
 import '../reducers/ui-applicationForm.tests'

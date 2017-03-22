@@ -1,6 +1,6 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchUser, getSingleUser} from '../reducers/users'
+import {fetchUser, getSingleUser} from './users-reducer'
 
 class Profile extends React.Component {
   componentDidMount () {

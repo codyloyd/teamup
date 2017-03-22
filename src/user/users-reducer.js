@@ -1,6 +1,6 @@
 import {combineReducers} from 'redux'
 import * as api from '../api'
-import {SIGN_IN_SUCCESSFUL} from './currentUser'
+import {SIGN_IN_SUCCESSFUL} from '../reducers/currentUser'
 // ** action types
 const FETCH_USERS_REQUESTED = 'FETCH_USERS_REQUESTED'
 const FETCH_USERS_SUCCESSFUL = 'FETCH_USERS_SUCCESSFUL'

@@ -8,9 +8,9 @@ import reducer, {
   fetchUsersSuccessful,
   fetchUsersRequested,
   fetchUsersFailed
-} from './users'
+} from '../users-reducer'
 
-import {signInSuccessful} from './currentUser'
+import {signInSuccessful} from '../../reducers/currentUser'
 
 const deepFreeze = (...args) => args.forEach(o => {
   if (o) freeze(o)

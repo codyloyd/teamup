@@ -2,12 +2,12 @@ import React from 'react'
 import {Provider} from 'react-redux'
 import {Router, Route, browserHistory, IndexRoute} from 'react-router'
 
-import App from '../containers/App'
-import Projects from '../containers/Projects'
-import ViewProject from '../containers/ViewProject'
-import NewProject from '../containers/NewProject'
-import EditProject from '../containers/EditProject'
-import Profile from '../containers/Profile'
+import App from '../../containers/App'
+import Projects from '../../containers/Projects'
+import ViewProject from '../../containers/ViewProject'
+import NewProject from '../../containers/NewProject'
+import EditProject from '../../containers/EditProject'
+import Profile from '../../user/Profile'
 const NoMatch = props => <h1 className="title">404 Error Message</h1>
 const LandingPage = props => <h1 className="title">Welcome</h1>
 

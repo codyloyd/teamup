@@ -3,7 +3,7 @@ import {combineReducers} from 'redux'
 import projects from './projects'
 import roles from './roles'
 import applications from './applications'
-import users from './users'
+import users from '../user/users-reducer'
 import currentUser from './currentUser'
 import ui from './ui'
 
