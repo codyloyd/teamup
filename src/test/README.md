@@ -9,6 +9,10 @@
 /src/components/projectForm
 /src/components/root
 /src/app/App
+/src/project/ViewProject
+/src/project/Projects
+/src/project/NewProject
+/src/project/EditProject
 ```
 
 ## test-unit.js

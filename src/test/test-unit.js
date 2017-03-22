@@ -11,7 +11,7 @@ import '../components/rolesList/test'
 import '../components/tagList/test'
 
 // Containers
-import '../containers/ViewProject.test'
+import '../project/test/ViewProject'
 import '../user/test/Profile'
 
 // Reducers
