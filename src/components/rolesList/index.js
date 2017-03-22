@@ -1,5 +1,5 @@
 import React from 'react'
-import RoleDetails from './roleDetails'
+import RoleDetails from '../roleDetails'
 
 const RolesList = ({roles, toggleApplicationForm}) => {
   if (!roles.length) {

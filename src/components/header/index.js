@@ -1,6 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router'
-import * as auth from '../api/auth'
+import * as auth from '../../api/auth'
 
 const SignInOutButton = ({loggedIn = false}) => {
   if (loggedIn) {

@@ -3,7 +3,7 @@ import React from 'react'
 import dom from 'cheerio'
 import ReactDOMServer from 'react-dom/server'
 
-import ProjectsList from './projectsList'
+import ProjectsList from '../'
 
 const render = ReactDOMServer.renderToStaticMarkup
 

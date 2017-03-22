@@ -2,7 +2,7 @@ import describe from 'tape'
 import React from 'react'
 import dom from 'cheerio'
 import ReactDOMServer from 'react-dom/server'
-import RoleDetails from './roleDetails'
+import RoleDetails from '../'
 
 const render = ReactDOMServer.renderToStaticMarkup
 

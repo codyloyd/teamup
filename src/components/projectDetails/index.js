@@ -1,5 +1,5 @@
 import React from 'react'
-import TagList from './tagList'
+import TagList from '../tagList'
 
 export default ({title, summary, description, tags}) => {
   return (

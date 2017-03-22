@@ -1,14 +1,14 @@
 // This file should import all the unit test files
 
 // Components
-import '../components/footer.test'
-import '../components/header.test'
-import '../components/projectDetails.test'
-import '../components/projectsList.test'
-import '../components/rolesList.test'
-import '../components/tagList.test'
-import '../components/roleDetails.test'
+import '../components/footer/test'
+import '../components/header/test'
 import '../components/hero/test'
+import '../components/projectDetails/test'
+import '../components/projectsList/test'
+import '../components/roleDetails/test'
+import '../components/rolesList/test'
+import '../components/tagList/test'
 
 // Containers
 import '../containers/ViewProject.test'
