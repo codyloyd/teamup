@@ -8,7 +8,7 @@ export const toggleApplicationForm = role => ({
   role
 })
 
-export const getApplicationForm = state => state.app.ui.applicationForm
+export const getApplicationForm = state => state.app.applicationForm
 
 export const visibility = (state = false, action = {}) => {
   switch (action.type) {
