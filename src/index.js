@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom'
 
 import Root from './components/root'
 import './index.css'
-import configureFirebase from './firebase'
+import configureFirebase from './configureFirebase'
 import configureStore from './configureStore'
 import appReducer from './reducers'
 
