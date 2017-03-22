@@ -7,7 +7,7 @@ import {
   errorMessage,
   fetchApplicationsSuccessful,
   createApplicationSuccessful
-} from './applications'
+} from '../applications-reducer'
 
 const deepFreeze = (...args) => args.forEach(freeze)
 

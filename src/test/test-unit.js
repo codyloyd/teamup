@@ -15,9 +15,9 @@ import '../project/test/ViewProject'
 import '../user/test/Profile'
 
 // Reducers
-import '../reducers/applications.tests'
+import '../application/test/applications-reducer'
 import '../user/test/currentUser-reducer'
 import '../project/test/projects-reducer'
 import '../project/test/roles-reducer'
 import '../user/test/users-reducer'
-import '../reducers/ui-applicationForm.tests'
+import '../application/test/ui-applicationForm-reducer'

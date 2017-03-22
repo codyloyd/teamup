@@ -13,6 +13,7 @@
 /src/project/Projects
 /src/project/NewProject
 /src/project/EditProject
+/src/project/ui-roleForm-reducer
 ```
 
 ## test-unit.js
