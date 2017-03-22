@@ -8,6 +8,7 @@
 /src/components/newRole
 /src/components/projectForm
 /src/components/root
+/src/app/App
 ```
 
 ## test-unit.js

@@ -1,6 +1,6 @@
 // import React from 'react'
 // import ReactDOM from 'react-dom'
-// import App from './App'
+// import App from '../App'
 
 // This is a Jest test
 // We'll replace it with tests using Tape

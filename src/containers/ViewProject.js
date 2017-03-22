@@ -6,7 +6,7 @@ import RolesList from '../components/rolesList'
 import Loading from '../components/loading'
 import NewRole from '../components/newRole'
 import ApplicationForm from '../components/applicationForm'
-import {fetchRoles, createRole} from '../reducers/roles'
+import {fetchRoles, createRole} from '../project/roles-reducer'
 import {createApplication} from '../reducers/applications'
 import {getRoleForm, toggleRoleForm} from '../reducers/ui-roleForm'
 import {

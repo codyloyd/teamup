@@ -1,7 +1,7 @@
 import describe from 'tape'
 import deepFreeze from 'deep-freeze'
 
-import {byId, allIds, isFetching, errorMessage} from './roles'
+import {byId, allIds, isFetching, errorMessage} from '../roles-reducer'
 
 describe('byId', ({test}) => {
   test('FETCH_ROLES_SUCCESSFUL', assert => {

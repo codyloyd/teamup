@@ -1,5 +1,5 @@
 import describe from 'tape'
-import {signInSuccessful, signOutSuccessful, currentUser} from './currentUser'
+import {signInSuccessful, signOutSuccessful, currentUser} from '../currentUser-reducer'
 import freeze from 'deep-freeze'
 
 const deepFreeze = (...args) => args.forEach(o => {

@@ -10,7 +10,7 @@ import appReducer from './reducers'
 // these imports are useful for testing.. but I keep them commented
 // so that they aren't imported when we aren't using them.
 // import * as projects from './reducers/projects'
-// import * as roles from './reducers/roles'
+// import * as roles from './project/roles-reducer'
 // import * as applications from './reducers/applications'
 import * as users from './user/users-reducer'
 // import * as api from './api'

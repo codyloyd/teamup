@@ -10,7 +10,7 @@ import reducer, {
   fetchUsersFailed
 } from '../users-reducer'
 
-import {signInSuccessful} from '../../reducers/currentUser'
+import {signInSuccessful} from '../currentUser-reducer'
 
 const deepFreeze = (...args) => args.forEach(o => {
   if (o) freeze(o)

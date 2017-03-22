@@ -2,7 +2,7 @@ import React from 'react'
 import {Provider} from 'react-redux'
 import {Router, Route, browserHistory, IndexRoute} from 'react-router'
 
-import App from '../../containers/App'
+import App from '../../app/App'
 import Projects from '../../containers/Projects'
 import ViewProject from '../../containers/ViewProject'
 import NewProject from '../../containers/NewProject'

@@ -1,5 +1,5 @@
 import firebase from 'firebase'
-import * as currentUser from './reducers/currentUser'
+import * as currentUser from './user/currentUser-reducer'
 import * as api from './api'
 
 var config = {
