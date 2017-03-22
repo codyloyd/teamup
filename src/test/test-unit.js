@@ -8,6 +8,7 @@ import '../components/projectsList.test'
 import '../components/rolesList.test'
 import '../components/tagList.test'
 import '../components/roleDetails.test'
+import '../components/hero/test'
 
 // Containers
 import '../containers/ViewProject.test'
