@@ -12,7 +12,7 @@ import '../components/hero/test'
 
 // Containers
 import '../containers/ViewProject.test'
-import '../containers/Profile.test'
+// import '../containers/Profile.test'
 
 // Reducers
 import '../reducers/applications.tests'

@@ -9,8 +9,5 @@
     "react/jsx-uses-vars": 1
   },
   "globals": {
-    # testing variables if using Jest built into CRA
-    # "it": false,
-    # "test": false
   }
 }

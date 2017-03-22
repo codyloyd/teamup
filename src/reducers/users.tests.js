@@ -158,23 +158,23 @@ describe('errorMessage', ({test}) => {
   })
 })
 
-describe('signInSuccessful()', ({test}) => {
-  test('after signing in', ({end, deepEqual}) => {
-    const msg = 'it should recieve the user entity of the signed in user'
-
-    const state = reducer()
-    const user = createUser({uid: '1'})
-    deepFreeze(state)
-    deepFreeze(user)
-
-    const expected = createState({
-      byId: {[user.uid]: user},
-      allIds: [user.uid]
-    })
-
-    const actual = reducer(state, signInSuccessful(user))
-
-    deepEqual(actual, expected, msg)
-    end()
-  })
-})
+// describe('signInSuccessful()', ({test}) => {
+//   test('after signing in', ({end, deepEqual}) => {
+//     const msg = 'it should recieve the user entity of the signed in user'
+//
+//     const state = reducer()
+//     const user = createUser({uid: '1'})
+//     deepFreeze(state)
+//     deepFreeze(user)
+//
+//     const expected = createState({
+//       byId: {[user.uid]: user},
+//       allIds: [user.uid]
+//     })
+//
+//     const actual = reducer(state, signInSuccessful(user))
+//
+//     deepEqual(actual, expected, msg)
+//     end()
+//   })
+// })

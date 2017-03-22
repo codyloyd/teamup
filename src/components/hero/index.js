@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'
 
 const Hero = ({title = '', subtitle = ''}) => (
   <section className="hero is-pattern is-primary">
