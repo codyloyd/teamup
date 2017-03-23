@@ -1,15 +1,16 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {fetchUser, getSingleUser} from './users-reducer'
+import Loading from '../components/loading'
+import {fetchUser, getSingleUser, getIsFetching} from './users-reducer'
 
 class Profile extends React.Component {
   componentDidMount () {
     this.props.fetchUser(this.props.params.id)
   }
   render () {
-    if (this.props.user) {
-      return (
-        <div className="container">
+    return this.props.isFetching
+      ? <Loading />
+      : <div className="container">
           <div className="column is-10 is-offset-1">
             <div className="box">
               <div className="columns">
@@ -30,9 +31,6 @@ class Profile extends React.Component {
             </div>
           </div>
         </div>
-      )
-    }
-    return null
   }
 }
 
@@ -76,7 +74,8 @@ const ProfileLink = ({link}) => {
 const mapStateToProps = (state, ownProps) => {
   const {params: {id}} = ownProps
   return {
-    user: getSingleUser(state, id)
+    user: getSingleUser(state, id),
+    isFetching: getIsFetching(state)
   }
 }
 

@@ -53,6 +53,10 @@ export const getSingleUser = (state, id) => {
   return byId && byId[id] ? byId[id] : {}
 }
 
+export const getIsFetching = state => {
+  return state.entities.users.isFetching
+}
+
 // ** reducers **
 const defaultState = {
   byId: {},
