@@ -27,7 +27,7 @@ describe('Hero', ({test}) => {
   })
 
   test('...hero title', ({equal, end}) => {
-    const msg = 'it should render the hero container'
+    const msg = 'it should render the title'
     const title = 'My Title'
     const props = createProps({
       title
@@ -42,7 +42,7 @@ describe('Hero', ({test}) => {
   })
 
   test('...hero subtitle', ({equal, end}) => {
-    const msg = 'it should render the hero container'
+    const msg = 'it should render the subtitle'
 
     const subtitle = 'Some subtitle text'
     const props = createProps({
