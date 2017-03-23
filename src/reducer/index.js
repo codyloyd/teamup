@@ -7,8 +7,14 @@ import users from '../user/users-reducer'
 import currentUser from '../user/currentUser-reducer'
 import applicationForm from '../application/ui-applicationForm-reducer'
 import roleForm from '../project/ui-roleForm-reducer'
+import {reducer as formReducer} from 'redux-form'
 
-const app = combineReducers({currentUser, applicationForm, roleForm})
+const app = combineReducers({
+  currentUser,
+  applicationForm,
+  roleForm,
+  formReducer
+})
 const entities = combineReducers({projects, roles, applications, users})
 
 export default combineReducers({app, entities})
