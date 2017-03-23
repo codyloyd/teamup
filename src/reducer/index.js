@@ -12,9 +12,8 @@ import {reducer as formReducer} from 'redux-form'
 const app = combineReducers({
   currentUser,
   applicationForm,
-  roleForm,
-  formReducer
+  roleForm
 })
 const entities = combineReducers({projects, roles, applications, users})
 
-export default combineReducers({app, entities})
+export default combineReducers({app, entities, form: formReducer})
