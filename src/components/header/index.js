@@ -39,7 +39,6 @@ const Profile = ({loggedIn = false, currentUser = ''}) => {
   return null
 }
 const header = props => {
-  console.log('HEADER BABY', props)
   return (
     <nav className="nav has-shadow">
       <div className="container">

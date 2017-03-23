@@ -20,7 +20,6 @@ export const currentUser = (state = defaultState, action = {}) => {
   const {type, user} = action
   switch (type) {
     case SIGN_IN_SUCCESSFUL:
-      console.log('currentUser.js', user)
       return user.uid
     case SIGN_OUT_SUCCESSFUL:
       return false
