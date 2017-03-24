@@ -8,9 +8,12 @@ class EditUser extends React.Component {
   componentDidMount () {
     this.props.fetchUser(this.props.params.id)
   }
+  componentDidUpdate () {
+    // console.log(this.props);
+  }
   render () {
-    console.log('EditUser.js', this.props.user)
-    return this.props.isFetching
+    console.log('My User', this.props.user.displayName)
+    return this.props.isFetching || !this.props.user.displayName
       ? <Loading />
       : <div>
           <UserForm
